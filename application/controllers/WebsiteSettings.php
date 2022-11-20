@@ -238,4 +238,56 @@ class WebsiteSettings extends CI_Controller
         );
         echo json_encode($output);
     }
+
+    public function getInquiry()
+    {
+        $inquiry = $this->WebsiteModel->getInquiry();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($inquiry as $list) {
+            $no++;
+            $row = array();
+
+            $row[] = $list->inquiry_id;
+            $row[] = '<i class="bi bi-person-circle me-2"></i>'.$list->name_client;
+            $row[] = 'Subject: '.$list->subject;
+            $row[] = date('D M j, Y', strtotime($list->date_created));
+            $row[] = $list->status;
+
+            $data[] = $row;
+        }
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->WebsiteModel->count_all_inquiry(),
+            "recordsFiltered" => $this->WebsiteModel->count_filtered_inquiry(),
+            "data" => $data
+        );
+        echo json_encode($output);
+    }
+
+    public function getContact()
+    {
+        $contact = $this->WebsiteModel->getContact();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($contact as $list) {
+            $no++;
+            $row = array();
+
+            $row[] = $list->contact_id;
+            $row[] = '<i class="bi bi-person-circle me-2"></i>'.$list->contact_name;
+            $row[] = 'Subject: '.$list->contact_subject;
+            $row[] = date('D M j, Y', strtotime($list->date_created));
+            $row[] = $list->status;
+
+            $data[] = $row;
+        }
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->WebsiteModel->count_all_contact(),
+            "recordsFiltered" => $this->WebsiteModel->count_filtered_contact(),
+            "data" => $data
+        );
+        echo json_encode($output);
+    }
 }

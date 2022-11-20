@@ -26,6 +26,18 @@ class MainModel extends CI_Model
         return $query->result_array();
     }
 
+    function exportInquiry()
+    {
+        $query = $this->db->get('inquiry');
+        return $query->result_array();
+    }
+
+    function exportContact()
+    {
+        $query = $this->db->get('contact_us');
+        return $query->result_array();
+    }
+
     function getPermission()
     {
         $this->db->where('user_id', $_SESSION['loggedIn']['user_id']);

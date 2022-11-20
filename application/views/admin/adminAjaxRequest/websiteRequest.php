@@ -70,6 +70,13 @@
         });
 
         var tableInquiry = $('#table_inquiry').DataTable({
+            "fnRowCallback": function(nRow, aData, iDisplayIndex, asd) {
+                if (aData[4] == 'Unread') {
+                    $('td', nRow).css('background-color', 'rgba(197, 231, 232, 0.8)');
+                } else {
+                    $('td', nRow).css('background-color', 'transparent');
+                }
+            },
             language: {
                 search: '',
                 searchPlaceholder: "Search Here...",
@@ -81,9 +88,31 @@
                 }
             },
             "ordering": false,
+            "serverSide": true,
+            "processing": true,
+            "pageLength": 25,
+            "stateSave": true,
+            "bDestroy": true,
+            "ajax": {
+                "url": "<?= base_url('WebsiteSettings/getInquiry') ?>",
+                "type": "POST"
+            },
+        });
+        $('#table_inquiry tbody').on('click', 'td', function() {
+            var data = tableInquiry.row(this).data();
+            var inquiryID = data[0];
+            console.log(inquiryID);
+            window.location.href = "<?= base_url('main/viewInquiry/')?>" + inquiryID;
         });
 
         var tableContact = $('#table_contact').DataTable({
+            "fnRowCallback": function(nRow, aData, iDisplayIndex, asd) {
+                if (aData[4] == 'Unread') {
+                    $('td', nRow).css('background-color', 'rgba(197, 231, 232, 0.8)');
+                } else {
+                    $('td', nRow).css('background-color', 'transparent');
+                }
+            },
             language: {
                 search: '',
                 searchPlaceholder: "Search Here...",
@@ -95,6 +124,21 @@
                 }
             },
             "ordering": false,
+            "serverSide": true,
+            "processing": true,
+            "pageLength": 25,
+            "stateSave": true,
+            "bDestroy": true,
+            "ajax": {
+                "url": "<?= base_url('WebsiteSettings/getContact') ?>",
+                "type": "POST"
+            },
+        });
+        $('#table_contact tbody').on('click', 'td', function() {
+            var data = tableContact.row(this).data();
+            var contactID = data[0];
+            console.log(contactID);
+            window.location.href = "<?= base_url('main/viewContact/')?>" + contactID;
         });
 
 

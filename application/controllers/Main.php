@@ -97,6 +97,30 @@ class Main extends CI_Controller
         $this->load->view('admin/adminAjaxRequest/websiteRequest');
     }
 
+    public function viewInquiry()
+    {
+        $inquiryID = $this->uri->segment(3);
+        $this->db->where('inquiry_id', $inquiryID)->update('inquiry', array('status' => 'Read'));
+        $data['inquiry'] = $this->db->where('inquiry_id', $inquiryID)->get('inquiry')->row();
+        $data['permissions'] = $this->MainModel->getPermission();
+        $this->load->view('admin/partials/__header', $data);
+        $this->load->view('admin/view_inquiry', $data);
+        $this->load->view('admin/partials/__footer');
+        $this->load->view('admin/adminAjaxRequest/websiteRequest');
+    }
+
+    public function viewContact()
+    {
+        $contactID = $this->uri->segment(3);
+        $this->db->where('contact_id', $contactID)->update('contact_us', array('status' => 'Read'));
+        $data['contact'] = $this->db->where('contact_id', $contactID)->get('contact_us')->row();
+        $data['permissions'] = $this->MainModel->getPermission();
+        $this->load->view('admin/partials/__header', $data);
+        $this->load->view('admin/view_contact', $data);
+        $this->load->view('admin/partials/__footer');
+        $this->load->view('admin/adminAjaxRequest/websiteRequest');
+    }
+
     //========================================================================================
 
     public function changePassword()
@@ -279,6 +303,64 @@ class Main extends CI_Controller
                 ->setCellValue('B' . $currentRow, $val['fullname'])
                 ->setCellValue('C' . $currentRow, $val['is_active'])
                 ->setCellValue('D' . $currentRow, $val['created_at']);
+            $currentRow++;
+        } //end of foreach
+        $spreadsheet->getActiveSheet()->removeRow($currentRow, 1);
+        $objWriter = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        header('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); //mime type
+        header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+        $objWriter->save('php://output');
+    }
+
+    public function exportInquiry()
+    {
+        require_once 'vendor/autoload.php';
+        $inquiry = $this->MainModel->exportInquiry();
+        $objReader = IOFactory::createReader('Xlsx');
+        $fileName = 'Inquiry.xlsx';
+
+        $spreadsheet = $objReader->load(FCPATH . '/assets/template/' . $fileName);
+        $sheet = $spreadsheet->getActiveSheet();
+        $startRow = 4;
+        $currentRow = 4;
+        foreach ($inquiry as $val) {
+            $spreadsheet->getActiveSheet()->insertNewRowBefore($currentRow + 1, 1);
+            $spreadsheet->getActiveSheet()
+                ->setCellValue('A' . $currentRow, $val['name_client'])
+                ->setCellValue('B' . $currentRow, $val['client_email'])
+                ->setCellValue('C' . $currentRow, $val['subject'])
+                ->setCellValue('D' . $currentRow, $val['message'])
+                ->setCellValue('E' . $currentRow, $val['date_created']);
+            $currentRow++;
+        } //end of foreach
+        $spreadsheet->getActiveSheet()->removeRow($currentRow, 1);
+        $objWriter = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        header('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); //mime type
+        header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+        $objWriter->save('php://output');
+    }
+
+    public function exportContact()
+    {
+        require_once 'vendor/autoload.php';
+        $inquiry = $this->MainModel->exportContact();
+        $objReader = IOFactory::createReader('Xlsx');
+        $fileName = 'Contact Us.xlsx';
+
+        $spreadsheet = $objReader->load(FCPATH . '/assets/template/' . $fileName);
+        $sheet = $spreadsheet->getActiveSheet();
+        $startRow = 4;
+        $currentRow = 4;
+        foreach ($inquiry as $val) {
+            $spreadsheet->getActiveSheet()->insertNewRowBefore($currentRow + 1, 1);
+            $spreadsheet->getActiveSheet()
+                ->setCellValue('A' . $currentRow, $val['contact_name'])
+                ->setCellValue('B' . $currentRow, $val['contact_email'])
+                ->setCellValue('C' . $currentRow, $val['contact_subject'])
+                ->setCellValue('D' . $currentRow, $val['contact_message'])
+                ->setCellValue('E' . $currentRow, $val['date_created']);
             $currentRow++;
         } //end of foreach
         $spreadsheet->getActiveSheet()->removeRow($currentRow, 1);

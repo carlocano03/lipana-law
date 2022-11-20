@@ -1,18 +1,27 @@
 <style>
-    #table_contact th:nth-child(1) {
+    #table_contact {
+        cursor: pointer;
+    }
+
+    #table_contact th:nth-child(2),
+    #table_contact td:nth-child(2) {
         width: 20%;
     }
 
-    #table_contact th:nth-child(2) {
+    #table_contact th:nth-child(3),
+    #table_contact td:nth-child(3) {
         width: 65%;
     }
 
-    #table_contact th:nth-child(3) {
+    #table_contact th:nth-child(4),
+    #table_contact td:nth-child(4) {
+        text-align: center;
         width: 12%;
     }
 
-    #table_contact td:nth-child(3) {
-        text-align: center;
+    #table_contact td:nth-child(1),
+    #table_contact td:nth-child(5) {
+        display: none;
     }
 </style>
 <div id="layoutSidenav_content">
@@ -29,39 +38,20 @@
                     <i class="fas fa-envelope me-2"></i>Contact Us Reports
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-secondary btn-sm mb-2"><i class="bi bi-cloud-download-fill me-2"></i>Extract Data</button>
+                    <a href="<?= base_url('main/exportContact');?>" class="btn btn-secondary btn-sm mb-2"><i class="bi bi-cloud-download-fill me-2"></i>Extract Data</a>
                     <div class="table-reponsive">
                         <table class="table table-hover" width="100%" cellspacing="0" id="table_contact">
                             <thead>
                                 <tr>
+                                    <th style="display: none;"></th>
                                     <th>Inbox</th>
                                     <th></th>
                                     <th></th>
+                                    <th style="display: none;"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><i class="fas fa-user-edit me-2"></i>
-                                        <span class="open-inbox"><a href="view_contact.html">Carlo Cano</a></span>
-                                    </td>
-                                    <td>
-                                        <span class="open-inbox"><a href="view_contact.html">
-                                                Subject: Lawfirm consultation booking appointment.....
-                                            </a></span>
-                                    </td>
-                                    <td>Tue Nov 15, 2022</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fas fa-user-edit me-2"></i>
-                                        <span class="open-inbox"><a href="view_contact.html">Juan Dela Cruz</a></span>
-                                    </td>
-                                    <td>
-                                        <span class="open-inbox"><a href="view_contact.html">
-                                                Subject: Lawfirm consultation booking appointment.....
-                                            </a></span>
-                                    </td>
-                                    <td>Tue Nov 15, 2022</td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>

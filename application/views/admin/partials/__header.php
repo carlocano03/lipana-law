@@ -146,13 +146,13 @@
 
                             <?php if ($row->permissions == "Inquiry Reports") { ?>
                                 <span class="nav-heading text-muted">Reports</span>
-                                <a class="nav-link <?= ($this->uri->segment(2) == 'inquiry' ? 'active' : '') ?>" href="<?= base_url('main/inquiry')?>">
+                                <a class="nav-link <?= ($this->uri->segment(2) == 'inquiry' || $this->uri->segment(2) == 'viewInquiry' ? 'active' : '') ?>" href="<?= base_url('main/inquiry')?>">
                                     <div class="sb-nav-link-icon"><i class="fas fa-archive"></i></div>
                                     Inquiry Reports
                                 </a>
                             <?php } ?>
                             <?php if ($row->permissions == "Contact Us Reports") { ?>
-                                <a class="nav-link <?= ($this->uri->segment(2) == 'contactUs' ? 'active' : '') ?>" href="<?= base_url('main/contactUs')?>">
+                                <a class="nav-link <?= ($this->uri->segment(2) == 'contactUs' || $this->uri->segment(2) == 'viewContact' ? 'active' : '') ?>" href="<?= base_url('main/contactUs')?>">
                                     <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
                                     Contact Us Reports
                                 </a>
