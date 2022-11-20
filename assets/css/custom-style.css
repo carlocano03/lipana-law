@@ -261,6 +261,7 @@
     font-size: 0.8em;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border-radius: 5px 5px 0 0 !important;
+    color: #2d3436;
 }
 
 .table thead tr {
@@ -338,7 +339,7 @@
 }
 
 .modal .modal-body h5 {
-    color: #f39c12;
+    color: #141E30;
 }
 
 .modal .modal-footer {
