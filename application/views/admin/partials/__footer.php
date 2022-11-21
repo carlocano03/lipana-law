@@ -55,6 +55,33 @@
 <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+    $(document).ready(function() {
+        function load_count(count = '') {
+            $.ajax({
+                url: "<?= base_url() . 'WebsiteSettings/getCount' ?>",
+                method: "POST",
+                data: {
+                    count: count
+                },
+                dataType: "json",
+                success: function(data) {
+                    if (data.inquiry_count > 0) {
+                        $('#inquiry').html(data.inquiry_count);
+                    }
+                    if (data.contact_count > 0) {
+                        $('#contact').html(data.contact_count);
+                    }
+                }
+            });
+        }
+        load_count();
+
+        setInterval(function() {
+            load_count();;
+        }, 5000);
+    });
+</script>
 </body>
 
 </html>

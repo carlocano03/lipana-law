@@ -90,3 +90,54 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalEditAbout" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 style="color: #1e272e;"><i class="fas fa-info-circle me-2"></i>Update About Us</h5>
+                    <hr>
+                    <form id="updateAbout" enctype="multipart/form-data">
+                        <input type="hidden" name="about_id" id="about_id">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" name="update_trans" id="update_trans" aria-label="Floating label select example" required>
+                                <option value="">Select update transaction</option>
+                                <option value="1">Edit Details Only</option>
+                                <option value="2">Edit Details & Re-upload video</option>
+                            </select>
+                            <label for="floatingSelect">Update Functions</label>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Title</label>
+                            <input type="text" class="form-control" id="title" name="title" autocomplete="off">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>About Us Descriptions</label>
+                            <textarea name="about_us" id="about_us" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Our Mission</label>
+                            <textarea name="mission" id="mission" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Our Vision</label>
+                            <textarea name="vision" id="vision" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Our Values</label>
+                            <textarea name="values" id="values" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group mb-3" id="update_video">
+                            <label>Corporate Video</label>
+                            <input type="file" name="inpFile" id="inpFile" class="form-control" accept="video/*">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-x-square-fill me-2"></i>Close</button>
+                    <button type="submit" class="btn btn-outline-primary btn-sm"><i class="bi bi-save-fill me-2"></i>Save Changes</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>

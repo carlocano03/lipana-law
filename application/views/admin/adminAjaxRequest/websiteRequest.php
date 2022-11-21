@@ -290,5 +290,66 @@
                 }
             })
         });
+
+        $('#update_video').hide('300');
+        $(document).on('click', '.update_about', function() {
+            var aboutID = $(this).attr('id');
+            $.ajax({
+                url:"<?= base_url('WebsiteSettings/getAboutUsData')?>",
+                method:"POST",
+                data:{aboutID:aboutID},
+                dataType:"json",
+                success:function(data) {
+                    $('#modalEditAbout').modal('show');
+                    $('#about_id').val(aboutID);
+                    $('#title').val(data.title);
+                    $('#about_us').val(data.about_us);
+                    $('#mission').text(data.mission);
+                    $('#vision').text(data.vision);
+                    $('#values').text(data.values);
+                }
+            });
+        });
+
+        $(document).on('change', '#update_trans', function() {
+            var trans = $(this).val();
+            switch (trans) {
+                case '2':
+                    $('#update_video').show('300');
+                    $('#inpFile').prop('required', true);
+                    break;
+            
+                default:
+                    $('#update_video').hide('300');
+                    $('#inpFile').prop('required', false);
+                    break;
+            }
+        });
+
+        $(document).on('submit', '#updateAbout', function(event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            $.ajax({
+                url: "<?= base_url() . 'WebsiteSettings/updateAboutUs' ?>",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    Swal.fire(
+                        'Thank you!',
+                        'Updated successfully.',
+                        'success'
+                    );
+                    $('#modalEditAbout').modal('hide');
+                    $('#updateAbout').trigger('reset');
+                    tableAbout.draw();
+                },
+                error: function() {
+                    Swal.fire('Error!', 'Something went wrong. Please try again later!', 'error');
+                }
+            });
+        });
     });
 </script>

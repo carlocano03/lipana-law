@@ -449,3 +449,14 @@
     background: #1e272e;
     transition: ease-in-out 0.5s;
 }
+
+.span-link {
+    color: #d63031;
+    font-weight: 600;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.span-link:hover {
+    text-decoration: underline;
+}

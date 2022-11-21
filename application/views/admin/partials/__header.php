@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="<?= base_url('assets/img/icon.png') ?>" rel="icon">
-    <title>LIPANA LAW</title>
+    <title>Lipana Law | Lipana . Bedural . Zoreta</title>
     <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.min.css" rel="stylesheet" />
@@ -148,21 +148,17 @@
                                 <span class="nav-heading text-muted">Reports</span>
                                 <a class="nav-link <?= ($this->uri->segment(2) == 'inquiry' || $this->uri->segment(2) == 'viewInquiry' ? 'active' : '') ?>" href="<?= base_url('main/inquiry')?>">
                                     <div class="sb-nav-link-icon"><i class="fas fa-archive"></i></div>
-                                    Inquiry Reports
+                                    Inquiry Reports<span class="badge bg-danger ms-2" id="inquiry"></span>
                                 </a>
                             <?php } ?>
                             <?php if ($row->permissions == "Contact Us Reports") { ?>
                                 <a class="nav-link <?= ($this->uri->segment(2) == 'contactUs' || $this->uri->segment(2) == 'viewContact' ? 'active' : '') ?>" href="<?= base_url('main/contactUs')?>">
                                     <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
-                                    Contact Us Reports
+                                    Contact Us Reports<span class="badge bg-danger ms-2" id="contact"></span>
                                 </a>
                             <?php } ?>
 
                         <?php endforeach; ?>
-
-
-
-
 
                     </div>
                 </div>

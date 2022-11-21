@@ -66,7 +66,8 @@ class WebsiteSettings extends CI_Controller
             $row = array();
 
 
-            $row[] = $about->title;
+            $row[] = '<div>' . $about->title . '</div>
+                      <span class="span-link update_about" title="Edit" id="' . $about->about_id . '"><i class="bi bi-pencil-square me-1"></i>Edit About</span>';
             $row[] = '<div class="short" title="' . $about->about_desc . '">' . $about->about_desc . '</div>';
             $row[] = '<div class="short" title="' . $about->mission . '">' . $about->mission . '</div>';
             $row[] = '<div class="short" title="' . $about->vision . '">' . $about->vision . '</div>';
@@ -249,8 +250,8 @@ class WebsiteSettings extends CI_Controller
             $row = array();
 
             $row[] = $list->inquiry_id;
-            $row[] = '<i class="bi bi-person-circle me-2"></i>'.$list->name_client;
-            $row[] = 'Subject: '.$list->subject;
+            $row[] = '<i class="bi bi-person-circle me-2"></i>' . $list->name_client;
+            $row[] = 'Subject: ' . $list->subject;
             $row[] = date('D M j, Y', strtotime($list->date_created));
             $row[] = $list->status;
 
@@ -275,8 +276,8 @@ class WebsiteSettings extends CI_Controller
             $row = array();
 
             $row[] = $list->contact_id;
-            $row[] = '<i class="bi bi-person-circle me-2"></i>'.$list->contact_name;
-            $row[] = 'Subject: '.$list->contact_subject;
+            $row[] = '<i class="bi bi-person-circle me-2"></i>' . $list->contact_name;
+            $row[] = 'Subject: ' . $list->contact_subject;
             $row[] = date('D M j, Y', strtotime($list->date_created));
             $row[] = $list->status;
 
@@ -289,5 +290,93 @@ class WebsiteSettings extends CI_Controller
             "data" => $data
         );
         echo json_encode($output);
+    }
+
+    public function getCount()
+    {
+        if (isset($_POST['count'])) {
+            $inquiry_query  = $this->db->query("
+                        SELECT *
+                        FROM inquiry WHERE status='Unread'
+                        ");
+            $inquiry = $inquiry_query->num_rows();
+
+            $contact_query  = $this->db->query("
+                        SELECT *
+                        FROM contact_us WHERE status='Unread'
+                        ");
+            $contact = $contact_query->num_rows();
+
+            $data = array(
+                'inquiry_count'  => $inquiry,
+                'contact_count' => $contact
+            );
+            echo json_encode($data);
+        }
+    }
+
+    public function getAboutUsData()
+    {
+        $aboutID = $this->input->post('aboutID');
+        $output = array();
+        $this->db->where('about_id', $aboutID);
+        $query = $this->db->get('about_us')->result();
+        foreach ($query as $row) {
+            $output['title'] = $row->title;
+            $output['about_us'] = $row->about_desc;
+            $output['mission'] = $row->mission;
+            $output['vision'] = $row->vision;
+            $output['values'] = $row->our_values;
+        }
+        echo json_encode($output);
+    }
+
+    public function updateAboutUs()
+    {
+        $options = $this->input->post('update_trans');
+        switch ($options) {
+            case '2':
+                $videoID = 'VD' . time() . rand(10, 1000);
+                if (!empty($_FILES['inpFile']['name'])) {
+                    $extension = explode('.', $_FILES['inpFile']['name']);
+                    $new_name = $videoID . '.' . $extension[1];
+                    $config['upload_path'] = 'uploaded_file/corporateVideo';
+                    $config['allowed_types'] = 'mp4|jpg|png';
+                    $config['file_name'] = $new_name;
+                    $this->load->library('upload', $config);
+                    $this->upload->display_errors();
+                    $this->upload->initialize($config);
+                    if ($this->upload->do_upload('inpFile')) {
+                        $uploadData = $this->upload->data();
+                        $uploadFile = $uploadData['file_name'];
+                    } else {
+                        $uploadFile = '';
+                    }
+                } else {
+                    $uploadFile = '';
+                }
+
+                $updateAbout = array(
+                    'title' => str_replace("'", "", $this->input->post('title')),
+                    'about_desc' => str_replace("'", "", $this->input->post('about_us')),
+                    'mission' => str_replace("'", "", $this->input->post('mission')),
+                    'vision' => str_replace("'", "", $this->input->post('vision')),
+                    'our_values' => str_replace("'", "", $this->input->post('values')),
+                    'corporate_video' => $uploadFile,
+                );
+                $this->db->where('about_id', $this->input->post('about_id'))->update('about_us', $updateAbout);
+                break;
+
+            default:
+                $updateAbout = array(
+                    'title' => str_replace("'", "", $this->input->post('title')),
+                    'about_desc' => str_replace("'", "", $this->input->post('about_us')),
+                    'mission' => str_replace("'", "", $this->input->post('mission')),
+                    'vision' => str_replace("'", "", $this->input->post('vision')),
+                    'our_values' => str_replace("'", "", $this->input->post('values')),
+                );
+                $this->db->where('about_id', $this->input->post('about_id'))->update('about_us', $updateAbout);
+                break;
+        }
     }
 }
