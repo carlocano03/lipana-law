@@ -8,10 +8,8 @@
                     <span class="txt-rotate" data-period="2000" data-rotate='[ "Freedom.", "Rights.", "Case.", "Custody." ]'></span>
                 </h1>
                 <!-- <h1 class="mb-4">Attorneys Fighting For Your Freedom</h1> -->
-                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4">Get Legal Advice <span class="ion-ios-arrow-forward"></span></a></p>
+                <p class="mb-4">Home Page Content ABCD</p>
+                <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4" >Get Legal Advice <span class="ion-ios-arrow-forward"></span></a></p>
             </div>
         </div>
     </div>
