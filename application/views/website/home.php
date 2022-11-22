@@ -289,7 +289,6 @@
     <div class="container">
         <div class="row d-md-flex justify-content-end">
             <div class="col-md-6 half p-3 py-5 pl-md-5 ftco-animate heading-section heading-section-white">
-                <span class="subheading">Booking an Appointment</span>
                 <h2 class="mb-4">Free Consultation</h2>
                 <form class="consultation">
                     <div class="form-group">
@@ -308,99 +307,6 @@
                         <button type="submit" class="btn btn-dark py-3 px-4"><i class="bi bi-send-plus-fill mr-2"></i>Send message</button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="ftco-section testimony-section">
-    <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center heading-section ftco-animate">
-                <span class="subheading">Testimonial</span>
-                <h2 class="mb-4">Happy Clients</h2>
-            </div>
-        </div>
-        <div class="row ftco-animate">
-            <div class="col-md-12">
-                <div class="carousel-testimony owl-carousel ftco-owl">
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="text">
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(webAssets/images/person_5.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="text">
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(webAssets/images/person_6.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="text">
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(webAssets/images/person_7.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="text">
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(webAssets/images/person_8.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="text">
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(webAssets/images/person_8.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

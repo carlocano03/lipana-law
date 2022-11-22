@@ -11601,7 +11601,7 @@ h5,
 }
 
 .ftco-navbar-light .navbar-nav>.nav-item>.nav-link:hover {
-  color: #e1b12c;
+  color: #3498db;
 }
 
 @media (max-width: 991.98px) {
@@ -11681,7 +11681,7 @@ h5,
 }
 
 .ftco-navbar-light .navbar-nav>.nav-item.active>a {
-  color: #e1b12c;
+  color: #3498db;
 }
 
 .ftco-navbar-light .navbar-toggler {
@@ -11721,7 +11721,7 @@ h5,
 }
 
 .ftco-navbar-light.scrolled .nav-item.active>a {
-  color: #e1b12c !important;
+  color: #3498db !important;
 }
 
 .ftco-navbar-light.scrolled .nav-item.cta>a {
@@ -11871,7 +11871,7 @@ h5,
   width: 5px;
   height: 100%;
   content: '';
-  background: #e1b12c;
+  background: #3498db;
   text-decoration: blink;
   -webkit-animation-name: blinker;
   -webkit-animation-duration: 0.6s;
@@ -11895,13 +11895,13 @@ h5,
 }
 
 .slider-text h1 span {
-  color: #e1b12c;
+  color: #3498db;
 }
 
 .slider-text .subheading {
   font-size: 15px;
   color: rgba(255, 255, 255, 0.7);
-  color: #e1b12c;
+  color: #3498db;
   text-transform: uppercase;
   font-family: "Poppins", Arial, sans-serif;
   font-weight: 800;
@@ -12151,7 +12151,7 @@ h5,
 .icon-video {
   width: 80px;
   height: 80px;
-  background: #e1b12c;
+  background: #3498db;
   -webkit-animation: pulse 2s infinite;
   animation: pulse 2s infinite;
   -webkit-border-radius: 50%;
@@ -12175,7 +12175,7 @@ h5,
   font-size: 20px;
   display: inline-block;
   padding: 20px;
-  background: #e1b12c;
+  background: #3498db;
   border-bottom-right-radius: 25px;
   border-top-right-radius: 2px;
 }
@@ -12276,14 +12276,14 @@ h5,
 }
 
 .services .icon span {
-  color: #e1b12c;
+  color: #3498db;
   font-size: 40px;
 }
 
 .services .text h3 {
   font-size: 18px;
   font-weight: 600;
-  color: #e1b12c;
+  color: #3498db;
 }
 
 .services .btn-custom {
@@ -12871,12 +12871,13 @@ textarea.form-control {
   display: block;
   margin-bottom: 5px;
   font-weight: 700;
-  color: #e1b12c;
+  color: #3498db;
 }
 
 .heading-section h2 {
   font-size: 30px;
   font-weight: 700;
+  color: #fff;
 }
 
 @media (max-width: 767.98px) {
