@@ -192,6 +192,9 @@
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis &rdquo;
                                 </p>
                             </blockquote>
+                            <div class="text-center" style="margin-top:170px;">
+                                <img src="<?= base_url('webAssets/images/logo.png')?>" style="width:150px; margin-top:30px; border-radius:10px;">
+                            </div>
                             <div class="author d-flex">
                                 <div class="image align-self-center">
                                     <img src="<?= base_url('webAssets/images/person_1.jpg') ?>" alt="">
@@ -219,6 +222,9 @@
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis &rdquo;
                                 </p>
                             </blockquote>
+                            <div class="text-center" style="margin-top:170px;">
+                                <img src="<?= base_url('webAssets/images/logo.png')?>" style="width:150px; margin-top:30px; border-radius:10px;">
+                            </div>
                             <div class="author d-flex">
                                 <div class="image align-self-center">
                                     <img src="<?= base_url('webAssets/images/person_2.jpg') ?>" alt="">
@@ -246,6 +252,9 @@
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis &rdquo;
                                 </p>
                             </blockquote>
+                            <div class="text-center" style="margin-top:170px;">
+                                <img src="<?= base_url('webAssets/images/logo.png')?>" style="width:150px; margin-top:30px; border-radius:10px;">
+                            </div>
                             <div class="author d-flex">
                                 <div class="image align-self-center">
                                     <img src="<?= base_url('webAssets/images/person_3.jpg') ?>" alt="">
@@ -272,6 +281,9 @@
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis &rdquo;
                                 </p>
                             </blockquote>
+                            <div class="text-center" style="margin-top:170px;">
+                                <img src="<?= base_url('webAssets/images/logo.png')?>" style="width:150px; margin-top:30px; border-radius:10px;">
+                            </div>
                             <div class="author d-flex">
                                 <div class="image align-self-center">
                                     <img src="<?= base_url('webAssets/images/person_4.jpg') ?>" alt="">
