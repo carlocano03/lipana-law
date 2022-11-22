@@ -1,4 +1,4 @@
-<div class="hero-wrap js-fullheight" style="background-image: url('webAssets/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+<div class="hero-wrap js-fullheight" style="background-image: url('webAssets/images/testBG.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
@@ -8,7 +8,9 @@
                     <span class="txt-rotate" data-period="2000" data-rotate='[ "Freedom.", "Rights.", "Case.", "Custody." ]'></span>
                 </h1>
                 <!-- <h1 class="mb-4">Attorneys Fighting For Your Freedom</h1> -->
-                <p class="mb-4">Home Page Content ABCD</p>
+                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua.</p>
                 <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4" >Get Legal Advice <span class="ion-ios-arrow-forward"></span></a></p>
             </div>
         </div>
@@ -152,7 +154,9 @@
                             <div class="case img d-flex align-items-center justify-content-center" style="background-image: url(uploaded_file/services/<?= $row->service_image;?>);">
                                 <div class="text text-center p-3">
                                     <h3><a href="#"><?= isset($row->service_title) ? $row->service_title : ''?></a></h3>
-                                    <span style="color:#f1c40f"><?= isset($row->short_desc) ? $row->short_desc : ''?></span>
+                                    <div class="short-desc" style="background: #fff; padding:5px; border-radius:10px;">
+                                        <span style="color:#3498db"><?= isset($row->short_desc) ? $row->short_desc : ''?></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
