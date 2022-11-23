@@ -37,18 +37,18 @@
 
     <nav class="navbar px-md-0 navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="<?= base_url('website') ?>">Lipana Law <span>Lipana . Bedural . Zoreta</span></a>
+            <a class="navbar-brand" href="<?= base_url('home') ?>">Lipana Law <span>Lipana . Bedural . Zoreta</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="<?= base_url('home') ?>" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="<?= base_url('home/about') ?>" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="<?= base_url('home/attorneys') ?>" class="nav-link">Attorneys</a></li>
-                    <li class="nav-item"><a href="<?= base_url('home/practiceAreas') ?>" class="nav-link">Practice Areas</a></li>
-                    <li class="nav-item"><a href="<?= base_url('home/contact') ?>" class="nav-link">Contact</a></li>
+                    <li class="nav-item <?= ($this->uri->segment(1) == '' ? 'active' : '') ?>"><a href="<?= base_url('home') ?>" class="nav-link">Home</a></li>
+                    <li class="nav-item <?= ($this->uri->segment(2) == 'about' ? 'active' : '') ?>"><a href="<?= base_url('home/about') ?>" class="nav-link">About</a></li>
+                    <li class="nav-item <?= ($this->uri->segment(2) == 'attorneys' ? 'active' : '') ?>"><a href="<?= base_url('home/attorneys') ?>" class="nav-link">Attorneys</a></li>
+                    <li class="nav-item <?= ($this->uri->segment(2) == 'practiceAreas' ? 'active' : '') ?>"><a href="<?= base_url('home/practiceAreas') ?>" class="nav-link">Practice Areas</a></li>
+                    <li class="nav-item <?= ($this->uri->segment(2) == 'contact' ? 'active' : '') ?>"><a href="<?= base_url('home/contact') ?>" class="nav-link">Contact</a></li>
                     <li class="nav-item cta"><a href="#consultation" class="nav-link">Free Consultation</a></li>
                 </ul>
             </div>

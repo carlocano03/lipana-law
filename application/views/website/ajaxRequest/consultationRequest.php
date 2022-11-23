@@ -1,5 +1,5 @@
 <script>
-    $(document).on('submit', '.consultation', function(event) {
+    $(document).on('submit', '#consultation', function(event) {
         event.preventDefault();
         event.stopImmediatePropagation();
 

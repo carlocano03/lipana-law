@@ -188,6 +188,31 @@ class WebsiteSettings extends CI_Controller
         echo json_encode($output);
     }
 
+    public function getAttorney()
+    {
+        $list = $this->WebsiteModel->getAttorney();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $area) {
+            $no++;
+            $row = array();
+
+            $row[] = $area->name;
+            $row[] = $area->practice_area;
+            $row[] = $area->short_quotes;
+            $row[] = '<button class="btn btn-danger btn-sm delete_attroney" id="' . $area->attorney_id . '"><i class="bi bi-trash3-fill me-2"></i>Delete</button>';
+
+            $data[] = $row;
+        }
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->WebsiteModel->count_all_attorney(),
+            "recordsFiltered" => $this->WebsiteModel->count_filtered_attorney(),
+            "data" => $data
+        );
+        echo json_encode($output);
+    }
+
     public function addPracticeArea()
     {
         $date_created = date('Y-m-d H:i:s');
@@ -220,6 +245,38 @@ class WebsiteSettings extends CI_Controller
         $this->db->insert('practice_area', $insertPractice);
     }
 
+    public function addAttorney()
+    {
+        $date_created = date('Y-m-d H:i:s');
+        $imgID = 'ATTY' . time() . rand(10, 1000);
+        if (!empty($_FILES['inpFile']['name'])) {
+            $extension = explode('.', $_FILES['inpFile']['name']);
+            $new_name = $imgID . '.' . $extension[1];
+            $config['upload_path'] = 'uploaded_file/attorneys';
+            $config['allowed_types'] = 'mp4|jpg|png|jpeg|gif';
+            $config['file_name'] = $new_name;
+            $this->load->library('upload', $config);
+            $this->upload->display_errors();
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('inpFile')) {
+                $uploadData = $this->upload->data();
+                $uploadFile = $uploadData['file_name'];
+            } else {
+                $uploadFile = '';
+            }
+        } else {
+            $uploadFile = '';
+        }
+
+        $insertAttorney = array(
+            'name' => str_replace("'", "", $this->input->post('name')),
+            'practice_area' => str_replace("'", "", $this->input->post('practice_areas')),
+            'short_quotes' => str_replace("'", "", $this->input->post('quotes')),
+            'image' => $uploadFile,
+        );
+        $this->db->insert('attorneys', $insertAttorney);
+    }
+
     public function deletePractice()
     {
         $message = '';
@@ -230,6 +287,26 @@ class WebsiteSettings extends CI_Controller
             'date_deleted' => $date_created
         );
         if ($this->db->where('practice_id', $practiceID)->update('practice_area', $updateServices)) {
+            $message = 'Success';
+        } else {
+            $message = '';
+        }
+        $output = array(
+            'message' => $message
+        );
+        echo json_encode($output);
+    }
+
+    public function deleteAttorney()
+    {
+        $message = '';
+        $attorneyID = $this->input->post('attorneyID');
+        $date_created = date('Y-m-d H:i:s');
+        $updateServices = array(
+            'is_deleted' => 'Yes',
+            'date_deleted' => $date_created
+        );
+        if ($this->db->where('attorney_id', $attorneyID)->update('attorneys', $updateServices)) {
             $message = 'Success';
         } else {
             $message = '';
@@ -378,5 +455,81 @@ class WebsiteSettings extends CI_Controller
                 $this->db->where('about_id', $this->input->post('about_id'))->update('about_us', $updateAbout);
                 break;
         }
+    }
+
+    public function addHome()
+    {
+        $insertHome = array(
+            'sec_one_title' => str_replace("'", "", $this->input->post('section_one_title')),
+            'sec_one_desc' => str_replace("'", "", $this->input->post('sec_one_desc')),
+            'sec_two_title' => str_replace("'", "", $this->input->post('section_two_title')),
+            'sec_two_desc' => str_replace("'", "", $this->input->post('sec_two_desc')),
+            'sec_three_title' => str_replace("'", "", $this->input->post('section_three_title')),
+            'sec_three_desc' => str_replace("'", "", $this->input->post('sec_three_desc')),
+            'why_select_us' => str_replace("'", "", $this->input->post('why_select_us')),
+        );
+        $this->db->insert('home_section', $insertHome);
+    }
+
+    public function getHome()
+    {
+        $list = $this->WebsiteModel->getHome();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $home) {
+            $no++;
+            $row = array();
+
+
+            $row[] = '<div>' . $home->why_select_us . '</div>
+                      <span class="span-link update_home" title="Edit" id="' . $home->section_id . '"><i class="bi bi-pencil-square me-1"></i>Edit About</span>';
+            $row[] = '<div class="short" title="' . $home->sec_one_title . '">' . $home->sec_one_title . '</div>';
+            $row[] = '<div class="short" title="' . $home->sec_one_desc . '">' . $home->sec_one_desc . '</div>';
+            $row[] = '<div class="short" title="' . $home->sec_two_title . '">' . $home->sec_two_title . '</div>';
+            $row[] = '<div class="short" title="' . $home->sec_two_desc . '">' . $home->sec_two_desc . '</div>';
+            $row[] = '<div class="short" title="' . $home->sec_three_title . '">' . $home->sec_three_title . '</div>';
+            $row[] = '<div class="short" title="' . $home->sec_three_desc . '">' . $home->sec_three_desc . '</div>';
+
+            $data[] = $row;
+        }
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->WebsiteModel->count_all_home(),
+            "recordsFiltered" => $this->WebsiteModel->count_filtered_home(),
+            "data" => $data
+        );
+        echo json_encode($output);
+    }
+
+    public function getHomeData()
+    {
+        $homeID = $this->input->post('homeID');
+        $output = array();
+        $this->db->where('section_id', $homeID);
+        $query = $this->db->get('home_section')->result();
+        foreach ($query as $row) {
+            $output['why_select_us'] = $row->why_select_us;
+            $output['section_one_title'] = $row->sec_one_title;
+            $output['sec_one_desc'] = $row->sec_one_desc;
+            $output['section_two_title'] = $row->sec_two_title;
+            $output['sec_two_desc'] = $row->sec_two_desc;
+            $output['section_three_title'] = $row->sec_three_title;
+            $output['sec_three_desc'] = $row->sec_three_desc;
+        }
+        echo json_encode($output);
+    }
+
+    public function updateHome()
+    {
+        $updateHome = array(
+            'sec_one_title' => str_replace("'", "", $this->input->post('section_one_title')),
+            'sec_one_desc' => str_replace("'", "", $this->input->post('sec_one_desc')),
+            'sec_two_title' => str_replace("'", "", $this->input->post('section_two_title')),
+            'sec_two_desc' => str_replace("'", "", $this->input->post('sec_two_desc')),
+            'sec_three_title' => str_replace("'", "", $this->input->post('section_three_title')),
+            'sec_three_desc' => str_replace("'", "", $this->input->post('sec_three_desc')),
+            'why_select_us' => str_replace("'", "", $this->input->post('why_select_us')),
+        );
+        $this->db->where('section_id', $this->input->post('home_id'))->update('home_section', $updateHome);
     }
 }

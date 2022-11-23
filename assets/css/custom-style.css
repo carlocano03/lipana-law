@@ -402,6 +402,7 @@
 
 .login-form input {
     background: transparent;
+    color: #fff;
 }
 
 .login-form input:focus {
@@ -433,7 +434,8 @@
 }
 
 .login-section .login-form .logo-icon img {
-    width: 150px;
+    width: 170px;
+    border-radius: 10px;
 }
 
 .btn-login {

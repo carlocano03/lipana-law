@@ -99,8 +99,8 @@
 <script src="<?= base_url('webAssets/js/aos.js')?>"></script>
 <script src="<?= base_url('webAssets/js/jquery.animateNumber.min.js')?>"></script>
 <script src="<?= base_url('webAssets/js/scrollax.min.js')?>"></script>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="<?= base_url('webAssets/js/google-map.js')?>"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="<?= base_url('webAssets/js/google-map.js')?>"></script>
 <script src="<?= base_url('webAssets/js/main.js')?>"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

@@ -22,8 +22,44 @@ class Home extends CI_Controller
     {
         $data['about'] = $this->WebModel->getAboutUs();
         $data['services'] = $this->WebModel->getServices();
+        $data['home'] = $this->WebModel->getHome();
+        $data['attorneys'] = $this->WebModel->getAttorneys();
         $this->load->view('website/partials/__header');
         $this->load->view('website/home', $data);
+        $this->load->view('website/partials/__footer');
+        $this->load->view('website/ajaxRequest/consultationRequest');
+    }
+
+    public function about()
+    {
+        $data['about'] = $this->WebModel->getAboutUs();
+        $this->load->view('website/partials/__header');
+        $this->load->view('website/about', $data);
+        $this->load->view('website/partials/__footer');
+        $this->load->view('website/ajaxRequest/consultationRequest');
+    }
+
+    public function attorneys()
+    {
+        $this->load->view('website/partials/__header');
+        $this->load->view('website/attorneys');
+        $this->load->view('website/partials/__footer');
+        $this->load->view('website/ajaxRequest/consultationRequest');
+    }
+
+    public function practiceAreas()
+    {
+        $data['areas'] = $this->WebModel->getAreas();
+        $this->load->view('website/partials/__header');
+        $this->load->view('website/practice_areas', $data);
+        $this->load->view('website/partials/__footer');
+        $this->load->view('website/ajaxRequest/consultationRequest');
+    }
+
+    public function contact()
+    {
+        $this->load->view('website/partials/__header');
+        $this->load->view('website/contact');
         $this->load->view('website/partials/__footer');
         $this->load->view('website/ajaxRequest/consultationRequest');
     }
@@ -32,14 +68,14 @@ class Home extends CI_Controller
     {
         $date_created = date('Y-m-d H:i:s');
         $insertConsultation = array(
-            'name_client' => $this->input->post('client_name'),
-            'client_email' => $this->input->post('client_email'),
-            'subject' => $this->input->post('subject'),
-            'message' => $this->input->post('message'),
+            'contact_name' => $this->input->post('client_name'),
+            'contact_email' => $this->input->post('client_email'),
+            'contact_subject' => $this->input->post('subject'),
+            'contact_message' => $this->input->post('message'),
             'status' => 'Unread',
             'date_created' => $date_created,
         );
-        $this->db->insert('inquiry', $insertConsultation);
+        $this->db->insert('contact_us', $insertConsultation);
     }
 
 }

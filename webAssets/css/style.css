@@ -11657,7 +11657,7 @@ h5,
   padding-left: 18px;
   padding-right: 18px;
   margin-top: 4px;
-  background: #1e272e;
+  background: #3498db;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
@@ -11670,7 +11670,7 @@ h5,
 }
 
 .ftco-navbar-light .navbar-nav>.nav-item.cta>a:hover {
-  background: rgba(0, 13, 8, 1);
+  opacity: 0.9 !important;
   border: 1px solid #fff;
   color: #fff;
 }
@@ -11726,7 +11726,7 @@ h5,
 
 .ftco-navbar-light.scrolled .nav-item.cta>a {
   color: #fff !important;
-  background: #1e272e;
+  background: #3498db;
   border: none !important;
   padding-top: 0.5rem !important;
   padding-bottom: .5rem !important;
@@ -12100,14 +12100,14 @@ h5,
 }
 
 .btn.btn-primary {
-  background: #1e272e !important;
+  background: #3498db !important;
   border: 1px solid #fff !important;
   color: #fff !important;
 }
 
 .btn.btn-primary:hover {
   border: 1px solid #afa939;
-  background: transparent;
+  background: transparent !important;
   color: #afa939;
 }
 
@@ -12317,8 +12317,9 @@ h5,
   display: block;
   margin-bottom: 40px;
   padding: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
   position: relative;
+  background: #fff;
 }
 
 @media (max-width: 767.98px) {
@@ -12348,7 +12349,7 @@ h5,
 
 .practice-area .icon span {
   font-size: 50px;
-  color: #afa939;
+  color: #3498db;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
@@ -12361,7 +12362,7 @@ h5,
 }
 
 .practice-area h3 a {
-  color: #000000;
+  color: #3498db;
 }
 
 .practice-area .btn-custom {
@@ -12372,7 +12373,7 @@ h5,
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #afa939;
+  background: #3498db;
   margin: 0 auto;
   opacity: 0;
   -moz-transition: all 0.3s ease;
@@ -12388,7 +12389,7 @@ h5,
 
 .practice-area:hover .icon,
 .practice-area:focus .icon {
-  background: #afa939;
+  background: #3498db;
 }
 
 .practice-area:hover .icon span,
@@ -13315,7 +13316,7 @@ textarea.form-control {
 }
 
 .contact-section .contact-info p a {
-  color: #1a1a1a;
+  color: #3498db;
 }
 
 .contact-section .contact-form {

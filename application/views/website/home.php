@@ -1,4 +1,4 @@
-<div class="hero-wrap js-fullheight" style="background-image: url('webAssets/images/testBG.jpg');" data-stellar-background-ratio="0.5">
+<div class="hero-wrap js-fullheight" style="background-image: url('webAssets/images/bg_1-test.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
@@ -9,9 +9,9 @@
                 </h1>
                 <!-- <h1 class="mb-4">Attorneys Fighting For Your Freedom</h1> -->
                 <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                        ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                        ut labore et dolore magna aliqua.</p>
-                <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4" >Get Legal Advice <span class="ion-ios-arrow-forward"></span></a></p>
+                    ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua.</p>
+                <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4">Get Legal Advice <span class="ion-ios-arrow-forward"></span></a></p>
             </div>
         </div>
     </div>
@@ -24,8 +24,9 @@
                 <div class="heading-section ftco-animate">
                     <span class="subheading">Services</span>
                     <h2 class="mb-4">Why Select Us?</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                        ut labore et dolore magna aliqua.</p>
+                    <p>
+                        <?= isset($home->why_select_us) ? $home->why_select_us : '' ?>
+                    </p>
                     <p><a href="#" class="btn btn-primary py-3 px-4">Free Consultation</a></p>
                 </div>
             </div>
@@ -37,11 +38,11 @@
                                 <span class="flaticon-lawyer"></span>
                             </div>
                             <div class="text">
-                                <h3>Fight for Justice</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
+                                <h3><?= isset($home->sec_one_title) ? $home->sec_one_title : '' ?></h3>
+                                <p>
+                                    <?= isset($home->sec_one_desc) ? $home->sec_one_desc : '' ?>
+                                </p>
                             </div>
-                            <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></a>
                         </div>
                     </div>
                     <div class="col-md-4 d-flex align-items-stretch">
@@ -50,11 +51,11 @@
                                 <span class="flaticon-lawyer"></span>
                             </div>
                             <div class="text">
-                                <h3>Best Case Strategy</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
+                                <h3><?= isset($home->sec_two_title) ? $home->sec_two_title : '' ?></h3>
+                                <p>
+                                    <?= isset($home->sec_two_desc) ? $home->sec_two_desc : '' ?>
+                                </p>
                             </div>
-                            <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></a>
                         </div>
                     </div>
                     <div class="col-md-4 d-flex align-items-stretch">
@@ -63,11 +64,11 @@
                                 <span class="flaticon-lawyer"></span>
                             </div>
                             <div class="text">
-                                <h3>Experienced Attorney</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
+                                <h3><?= isset($home->sec_three_title) ? $home->sec_three_title : '' ?></h3>
+                                <p>
+                                    <?= isset($home->sec_three_desc) ? $home->sec_three_desc : '' ?>
+                                </p>
                             </div>
-                            <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></a>
                         </div>
                     </div>
                 </div>
@@ -151,11 +152,11 @@
                 <div class="carousel-case owl-carousel ftco-owl">
                     <?php foreach ($services as $row) : ?>
                         <div class="item">
-                            <div class="case img d-flex align-items-center justify-content-center" style="background-image: url(uploaded_file/services/<?= $row->service_image;?>);">
+                            <div class="case img d-flex align-items-center justify-content-center" style="background-image: url(uploaded_file/services/<?= $row->service_image; ?>);">
                                 <div class="text text-center p-3">
-                                    <h3><a href="#"><?= isset($row->service_title) ? $row->service_title : ''?></a></h3>
+                                    <h3><a href="#"><?= isset($row->service_title) ? $row->service_title : '' ?></a></h3>
                                     <div class="short-desc" style="background: #fff; padding:5px; border-radius:10px;">
-                                        <span style="color:#3498db"><?= isset($row->short_desc) ? $row->short_desc : ''?></span>
+                                        <span style="color:#3498db"><?= isset($row->short_desc) ? $row->short_desc : '' ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -175,126 +176,40 @@
                 <h2 class="mb-4">Our Legal Attorneys</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="block-2 ftco-animate">
-                    <div class="flipper">
-                        <div class="front" style="background-image: url(webAssets/images/person_1.jpg);">
-                            <div class="box">
-                                <h2>Ryan Anderson</h2>
-                                <p>Civil Lawyer</p>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <!-- back content -->
-                            <blockquote>
-                                <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis &rdquo;
-                                </p>
-                            </blockquote>
-                            <div class="text-center" style="margin-top:170px;">
-                                <img src="<?= base_url('webAssets/images/logo.png')?>" style="width:150px; margin-top:30px; border-radius:10px;">
-                            </div>
-                            <div class="author d-flex">
-                                <div class="image align-self-center">
-                                    <img src="<?= base_url('webAssets/images/person_1.jpg') ?>" alt="">
+        <div class="row d-flex justify-content-center">
+
+            <?php foreach ($attorneys as $row) : ?>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="block-2 ftco-animate">
+                        <div class="flipper">
+                            <div class="front" style="background-image: url(webAssets/images/person_1.jpg);">
+                                <div class="box">
+                                    <h2><?= $row->name;?></h2>
+                                    <p><?= $row->practice_area;?></p>
                                 </div>
-                                <div class="name align-self-center ml-3">Ryan Anderson <span class="position">Civil
-                                        Lawyer</span></div>
+                            </div>
+                            <div class="back">
+                                <!-- back content -->
+                                <blockquote>
+                                    <p>
+                                        &ldquo; <?= $row->short_quotes;?> &rdquo;
+                                    </p>
+                                </blockquote>
+                                <div class="text-center" style="margin-top:170px;">
+                                    <img src="<?= base_url('webAssets/images/logo.png') ?>" style="width:150px; margin-top:30px; border-radius:10px;">
+                                </div>
+                                <div class="author d-flex">
+                                    <div class="image align-self-center">
+                                        <img src="<?= base_url('uploaded_file/attorneys/'.$row->image.'') ?>" alt="">
+                                    </div>
+                                    <div class="name align-self-center ml-3"><?= $row->name;?> <span class="position"><?= $row->practice_area;?></span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="block-2 ftco-animate">
-                    <div class="flipper">
-                        <div class="front" style="background-image: url(webAssets/images/person_2.jpg);">
-                            <div class="box">
-                                <h2>Greg Washer</h2>
-                                <p>Business Lawyer</p>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <!-- back content -->
-                            <blockquote>
-                                <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis &rdquo;
-                                </p>
-                            </blockquote>
-                            <div class="text-center" style="margin-top:170px;">
-                                <img src="<?= base_url('webAssets/images/logo.png')?>" style="width:150px; margin-top:30px; border-radius:10px;">
-                            </div>
-                            <div class="author d-flex">
-                                <div class="image align-self-center">
-                                    <img src="<?= base_url('webAssets/images/person_2.jpg') ?>" alt="">
-                                </div>
-                                <div class="name align-self-center ml-3">Greg Washer<span class="position">Business
-                                        Lawyer</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="block-2 ftco-animate">
-                    <div class="flipper">
-                        <div class="front" style="background-image: url(webAssets/images/person_3.jpg);">
-                            <div class="box">
-                                <h2>Tony Henderson</h2>
-                                <p>Criminal Defense</p>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <!-- back content -->
-                            <blockquote>
-                                <p>&ldquo;ELorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis &rdquo;
-                                </p>
-                            </blockquote>
-                            <div class="text-center" style="margin-top:170px;">
-                                <img src="<?= base_url('webAssets/images/logo.png')?>" style="width:150px; margin-top:30px; border-radius:10px;">
-                            </div>
-                            <div class="author d-flex">
-                                <div class="image align-self-center">
-                                    <img src="<?= base_url('webAssets/images/person_3.jpg') ?>" alt="">
-                                </div>
-                                <div class="name align-self-center ml-3">Tony Henderson <span class="position">Criminal Defense</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="block-2 ftco-animate">
-                    <div class="flipper">
-                        <div class="front" style="background-image: url(webAssets/images/person_4.jpg);">
-                            <div class="box">
-                                <h2>Jack Smith</h2>
-                                <p>Insurance Lawyer</p>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <!-- back content -->
-                            <blockquote>
-                                <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis &rdquo;
-                                </p>
-                            </blockquote>
-                            <div class="text-center" style="margin-top:170px;">
-                                <img src="<?= base_url('webAssets/images/logo.png')?>" style="width:150px; margin-top:30px; border-radius:10px;">
-                            </div>
-                            <div class="author d-flex">
-                                <div class="image align-self-center">
-                                    <img src="<?= base_url('webAssets/images/person_4.jpg') ?>" alt="">
-                                </div>
-                                <div class="name align-self-center ml-3">Jack Smith <span class="position">Insurance
-                                        Lawyer</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
+
         </div>
     </div>
 </section>
@@ -306,7 +221,7 @@
         <div class="row d-md-flex justify-content-end">
             <div class="col-md-6 half p-3 py-5 pl-md-5 ftco-animate heading-section heading-section-white">
                 <h2 class="mb-4">Free Consultation</h2>
-                <form class="consultation">
+                <form class="consultation" id="consultation">
                     <div class="form-group">
                         <input type="text" name="client_name" class="form-control" placeholder="Your Name" required>
                     </div>

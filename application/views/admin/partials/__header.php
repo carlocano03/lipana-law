@@ -109,17 +109,17 @@
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
 
-                        <div class="collapse <?= ($this->uri->segment(2) == 'about' || $this->uri->segment(2) == 'services'  ? 'show' : '') ?>" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <div class="collapse <?= ($this->uri->segment(2) == 'about' || $this->uri->segment(2) == 'services' || $this->uri->segment(2) == 'home'  ? 'show' : '') ?>" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
 
                                 <?php foreach ($permissions as $row) : ?>
+                                    <?php if ($row->permissions == "Home Section") : ?>
+                                        <a class="nav-link <?= ($this->uri->segment(2) == 'home' ? 'active' : '') ?>" href="<?= base_url('main/home')?>"><i class="bi bi-house-gear-fill me-2"></i>Home Section</a>
+                                    <?php endif; ?>
                                     <?php if ($row->permissions == "About Us") : ?>
                                         <a class="nav-link <?= ($this->uri->segment(2) == 'about' ? 'active' : '') ?>" href="<?= base_url('main/about')?>"><i class="fas fa-info-circle me-2"></i>About Us</a>
                                     <?php endif; ?>
-                                    <!-- <?php if ($row->permissions == "Mission/Vision & Values") : ?>
-                                        <a class="nav-link" href="mission_vission.html"><i class="fas fa-folder-open me-2"></i>Mission/Vision & Values</a>
-                                    <?php endif; ?>
-                                    <?php if ($row->permissions == "Corporate Video") : ?>
+                                    <!-- <?php if ($row->permissions == "Corporate Video") : ?>
                                         <a class="nav-link" href="corporate.html"><i class="fas fa-photo-video me-2"></i>Corporate Video</a>
                                     <?php endif; ?> -->
                                     <?php if ($row->permissions == "Services") : ?>
@@ -136,8 +136,15 @@
                             <?php if ($row->permissions == "Practice Area") { ?>
                                 <span class="nav-heading text-muted">Attorney</span>
                                 <a class="nav-link <?= ($this->uri->segment(2) == 'practiceAreas' ? 'active' : '') ?>" href="<?= base_url('main/practiceAreas')?>">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-archive"></i></div>
+                                    <div class="sb-nav-link-icon"><i class="bi bi-list-columns-reverse"></i></div>
                                     Practice Area
+                                </a>
+                            <?php } ?>
+
+                            <?php if ($row->permissions == "Attorneys") { ?>
+                                <a class="nav-link <?= ($this->uri->segment(2) == 'attorneys' ? 'active' : '') ?>" href="<?= base_url('main/attorneys')?>">
+                                    <div class="sb-nav-link-icon"><i class="bi bi-person-badge"></i></div>
+                                    Attorneys
                                 </a>
                             <?php } ?>
 

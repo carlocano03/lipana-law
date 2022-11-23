@@ -23,6 +23,29 @@
             },
         });
 
+        var tableHome = $('#table_home').DataTable({
+            language: {
+                search: '',
+                searchPlaceholder: "Search Here...",
+                processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><br>Loading... ',
+                "info": "_START_-_END_ of _TOTAL_ entries",
+                paginate: {
+                    next: '<i class="fas fa-chevron-right"></i>',
+                    previous: '<i class="fas fa-chevron-left"></i>'
+                }
+            },
+            "ordering": false,
+            "serverSide": true,
+            "processing": true,
+            "pageLength": 25,
+            "stateSave": true,
+            "bDestroy": true,
+            "ajax": {
+                "url": "<?= base_url('WebsiteSettings/getHome') ?>",
+                "type": "POST"
+            },
+        });
+
         var tableServices = $('#table_services').DataTable({
             language: {
                 search: '',
@@ -65,6 +88,29 @@
             "bDestroy": true,
             "ajax": {
                 "url": "<?= base_url('WebsiteSettings/getPracticeArea') ?>",
+                "type": "POST"
+            },
+        });
+
+        var tableAttorney = $('#table_attorneys').DataTable({
+            language: {
+                search: '',
+                searchPlaceholder: "Search Here...",
+                processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><br>Loading... ',
+                "info": "_START_-_END_ of _TOTAL_ entries",
+                paginate: {
+                    next: '<i class="fas fa-chevron-right"></i>',
+                    previous: '<i class="fas fa-chevron-left"></i>'
+                }
+            },
+            "ordering": false,
+            "serverSide": true,
+            "processing": true,
+            "pageLength": 25,
+            "stateSave": true,
+            "bDestroy": true,
+            "ajax": {
+                "url": "<?= base_url('WebsiteSettings/getAttorney') ?>",
                 "type": "POST"
             },
         });
@@ -158,6 +204,7 @@
                         'About Us successfully added.',
                         'success'
                     );
+                    $('#addAbout').trigger('reset');
                     $('#modalAbout').modal('hide');
                     tableAbout.draw();
                 },
@@ -166,6 +213,33 @@
                 }
             });
         });
+
+        $(document).on('submit', '#addHome', function(event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            $.ajax({
+                url: "<?= base_url() . 'WebsiteSettings/addHome' ?>",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    Swal.fire(
+                        'Thank you!',
+                        'About Us successfully added.',
+                        'success'
+                    );
+                    $('#addHome').trigger('reset');
+                    $('#modalHome').modal('hide');
+                    tableHome.draw();
+                },
+                error: function() {
+                    Swal.fire('Error!', 'Something went wrong. Please try again later!', 'error');
+                }
+            });
+        });
+
 
         $(document).on('submit', '#addServices', function(event) {
             event.preventDefault();
@@ -245,8 +319,35 @@
                         'Practice Area successfully added.',
                         'success'
                     );
+                    $('#addPracticeArea').trigger('reset');
                     $('#modalPracticeArea').modal('hide');
                     tablePracticeArea.draw();
+                },
+                error: function() {
+                    Swal.fire('Error!', 'Something went wrong. Please try again later!', 'error');
+                }
+            });
+        });
+
+        $(document).on('submit', '#addAttorney', function(event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            $.ajax({
+                url: "<?= base_url() . 'WebsiteSettings/addAttorney' ?>",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    Swal.fire(
+                        'Thank you!',
+                        'Attorney successfully added.',
+                        'success'
+                    );
+                    $('#addAttorney').trigger('reset');
+                    $('#modalAttorney').modal('hide');
+                    tableAttorney.draw();
                 },
                 error: function() {
                     Swal.fire('Error!', 'Something went wrong. Please try again later!', 'error');
@@ -281,6 +382,43 @@
                                     'success'
                                 );
                                 tablePracticeArea.draw();
+                            }
+                        },
+                        error: function() {
+                            Swal.fire('Error!', 'Something went wrong. Please try again later!', 'error');
+                        }
+                    });
+                }
+            })
+        });
+
+        $(document).on('click', '.delete_attroney', function() {
+            var attorneyID = $(this).attr('id');
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "<?= base_url('WebsiteSettings/deleteAttorney') ?>",
+                        method: "POST",
+                        data: {
+                            attorneyID: attorneyID
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            if (data.message == 'Success') {
+                                Swal.fire(
+                                    'Thank you!',
+                                    'Attorney successfully deleted.',
+                                    'success'
+                                );
+                                tableAttorney.draw();
                             }
                         },
                         error: function() {
@@ -345,6 +483,54 @@
                     $('#modalEditAbout').modal('hide');
                     $('#updateAbout').trigger('reset');
                     tableAbout.draw();
+                },
+                error: function() {
+                    Swal.fire('Error!', 'Something went wrong. Please try again later!', 'error');
+                }
+            });
+        });
+
+        $(document).on('click', '.update_home', function() {
+            var homeID = $(this).attr('id');
+            $.ajax({
+                url:"<?= base_url('WebsiteSettings/getHomeData')?>",
+                method:"POST",
+                data:{homeID:homeID},
+                dataType:"json",
+                success:function(data) {
+                    $('#modalEditHome').modal('show');
+                    $('#home_id').val(homeID);
+
+                    $('#why_select_us').val(data.why_select_us);
+                    $('#section_one_title').val(data.section_one_title);
+                    $('#sec_one_desc').text(data.sec_one_desc);
+                    $('#section_two_title').val(data.section_two_title);
+                    $('#sec_two_desc').text(data.sec_two_desc);
+                    $('#section_three_title').val(data.section_three_title);
+                    $('#sec_three_desc').text(data.sec_three_desc);
+                }
+            });
+        });
+
+        $(document).on('submit', '#updateHome', function(event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            $.ajax({
+                url: "<?= base_url() . 'WebsiteSettings/updateHome' ?>",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    Swal.fire(
+                        'Thank you!',
+                        'Updated successfully.',
+                        'success'
+                    );
+                    $('#modalEditHome').modal('hide');
+                    $('#updateHome').trigger('reset');
+                    tableHome.draw();
                 },
                 error: function() {
                     Swal.fire('Error!', 'Something went wrong. Please try again later!', 'error');

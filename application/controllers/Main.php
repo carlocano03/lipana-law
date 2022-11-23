@@ -52,6 +52,15 @@ class Main extends CI_Controller
         $this->load->view('admin/adminAjaxRequest/profileRequest');
     }
 
+    public function home()
+    {
+        $data['permissions'] = $this->MainModel->getPermission();
+        $this->load->view('admin/partials/__header', $data);
+        $this->load->view('admin/home');
+        $this->load->view('admin/partials/__footer');
+        $this->load->view('admin/adminAjaxRequest/websiteRequest');
+    }
+
     public function about()
     {
         $data['permissions'] = $this->MainModel->getPermission();
@@ -75,6 +84,15 @@ class Main extends CI_Controller
         $data['permissions'] = $this->MainModel->getPermission();
         $this->load->view('admin/partials/__header', $data);
         $this->load->view('admin/practice_areas');
+        $this->load->view('admin/partials/__footer');
+        $this->load->view('admin/adminAjaxRequest/websiteRequest');
+    }
+
+    public function attorneys()
+    {
+        $data['permissions'] = $this->MainModel->getPermission();
+        $this->load->view('admin/partials/__header', $data);
+        $this->load->view('admin/attorneys');
         $this->load->view('admin/partials/__footer');
         $this->load->view('admin/adminAjaxRequest/websiteRequest');
     }

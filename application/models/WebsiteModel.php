@@ -32,6 +32,16 @@ class WebsiteModel extends CI_Model
     var $contact_order = array('contact_id', 'contact_name', 'contact_subject', 'status', 'date_created');
     var $contact_search = array('contact_id', 'contact_name', 'contact_subject', 'status', 'date_created'); //set column field database for datatable searchable just article , description , serial_num, property_num, department are searchable
     var $order_contact = array('contact_id' => 'desc'); // default order
+
+    var $home = 'home_section';
+    var $home_order = array('why_select_us', 'sec_one_title', 'sec_one_desc', 'sec_two_title', 'sec_two_desc', 'sec_three_title', 'sec_three_desc');
+    var $home_search = array('why_select_us', 'sec_one_title', 'sec_one_desc', 'sec_two_title', 'sec_two_desc', 'sec_three_title', 'sec_three_desc'); //set column field database for datatable searchable just article , description , serial_num, property_num, department are searchable
+    var $order_home = array('section_id' => 'desc'); // default order
+
+    var $attorneys = 'attorneys';
+    var $attorneys_order = array('name', 'practice_area', 'short_quotes', 'image');
+    var $attorneys_search = array('name', 'practice_area', 'short_quotes'); //set column field database for datatable searchable just article , description , serial_num, property_num, department are searchable
+    var $order_attorneys = array('attorney_id' => 'desc'); // default order
     /**
      * __construct function.
      * 
@@ -93,6 +103,60 @@ class WebsiteModel extends CI_Model
             $this->db->order_by($this->about_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
         } else if (isset($this->order)) {
             $order = $this->order;
+            $this->db->order_by(key($order), $order[key($order)]);
+        }
+    }
+
+    //Get Home
+    public function getHome()
+    {
+        $this->_getHome_query();
+        if ($_POST['length'] != -1)
+            $this->db->limit($_POST['length'], $_POST['start']);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function count_filtered_home()
+    {
+        $this->_getHome_query();
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function count_all_home()
+    {
+        $this->db->from($this->home);
+        return $this->db->count_all_results();
+    }
+
+    private function _getHome_query()
+    {
+        $this->db->from($this->home);
+
+        $i = 0;
+        foreach ($this->home_search as $item) // loop column 
+        {
+            if ($_POST['search']['value']) // if datatable send POST for search
+            {
+                if ($i === 0) // first loop
+                {
+                    $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+                    $this->db->like($item, $_POST['search']['value']);
+                } else {
+                    $this->db->or_like($item, $_POST['search']['value']);
+                }
+
+                if (count($this->home_search) - 1 == $i) //last loop
+                    $this->db->group_end(); //close bracket
+            }
+            $i++;
+        }
+        if (isset($_POST['order'])) // here order processing
+        {
+            $this->db->order_by($this->home_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } else if (isset($this->order_home)) {
+            $order = $this->order_home;
             $this->db->order_by(key($order), $order[key($order)]);
         }
     }
@@ -205,6 +269,62 @@ class WebsiteModel extends CI_Model
             $this->db->order_by($this->area_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
         } else if (isset($this->order_area)) {
             $order = $this->order_area;
+            $this->db->order_by(key($order), $order[key($order)]);
+        }
+    }
+
+    //Get Attorneys
+    public function getAttorney()
+    {
+        $this->_getAttorney_query();
+        if ($_POST['length'] != -1)
+            $this->db->limit($_POST['length'], $_POST['start']);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function count_filtered_attorney()
+    {
+        $this->_getAttorney_query();
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function count_all_attorney()
+    {
+        $this->db->where('is_deleted', NULL);
+        $this->db->from($this->attorneys);
+        return $this->db->count_all_results();
+    }
+
+    private function _getAttorney_query()
+    {
+        $this->db->where('is_deleted', NULL);
+        $this->db->from($this->attorneys);
+
+        $i = 0;
+        foreach ($this->attorneys_search as $item) // loop column 
+        {
+            if ($_POST['search']['value']) // if datatable send POST for search
+            {
+                if ($i === 0) // first loop
+                {
+                    $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+                    $this->db->like($item, $_POST['search']['value']);
+                } else {
+                    $this->db->or_like($item, $_POST['search']['value']);
+                }
+
+                if (count($this->attorneys_search) - 1 == $i) //last loop
+                    $this->db->group_end(); //close bracket
+            }
+            $i++;
+        }
+        if (isset($_POST['order'])) // here order processing
+        {
+            $this->db->order_by($this->attorneys_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } else if (isset($this->order_attorneys)) {
+            $order = $this->order_attorneys;
             $this->db->order_by(key($order), $order[key($order)]);
         }
     }

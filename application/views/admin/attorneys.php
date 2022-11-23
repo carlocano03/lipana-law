@@ -1,9 +1,10 @@
 <style>
-    #table_area {
-        text-align: justify;
+    #table_attorneys th:nth-child(3),
+    #table_attorneys td:nth-child(3) {
+        max-width: 100px;
     }
 
-    #table_area :nth-child(4) {
+    #table_attorneys td:nth-child(4) {
         text-align: center;
     }
 </style>
@@ -18,17 +19,17 @@
 
             <div class="card">
                 <div class="card-header" style="background:#2d3436; color: #fff;">
-                    <i class="bi bi-list-columns-reverse me-2"></i>Practice Areas
+                    <i class="bi bi-list-columns-reverse me-2"></i>List of Attorneys
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-secondary btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#modalPracticeArea"><i class="bi bi-plus-square-fill me-2"></i>Add New</button>
+                    <button class="btn btn-secondary btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#modalAttorney"><i class="bi bi-plus-square-fill me-2"></i>Add New</button>
                     <div class="table-reponsive">
-                        <table class="table table-hover" width="100%" cellspacing="0" id="table_area">
+                        <table class="table table-hover" width="100%" cellspacing="0" id="table_attorneys">
                             <thead>
                                 <tr>
-                                    <th>Practice Area</th>
-                                    <th>Short Descriptions</th>
-                                    <th>Image</th>
+                                    <th>Attorney's Name</th>
+                                    <th>Practice Areas</th>
+                                    <th>Quotes</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -45,20 +46,24 @@
     </main>
 
     <!-- Modal -->
-    <div class="modal fade" id="modalPracticeArea" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="modalAttorney" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h5 style="color: #1e272e;"><i class="bi bi-list-columns-reverse me-2"></i>Practice Areas</h5>
+                    <h5 style="color: #1e272e;"><i class="bi bi-list-columns-reverse me-2"></i>Attorneys</h5>
                     <hr>
-                    <form id="addPracticeArea" enctype="multipart/form-data">
+                    <form id="addAttorney" enctype="multipart/form-data">
                         <div class="form-group mb-3">
-                            <label>Practice Area</label>
-                            <input type="text" class="form-control" name="title" autocomplete="off" required>
+                            <label>Attorney's Name</label>
+                            <input type="text" class="form-control" name="name" autocomplete="off" required>
                         </div>
                         <div class="form-group mb-3">
-                            <label>Short Descriptions</label>
-                            <textarea name="short_desc" class="form-control" required></textarea>
+                            <label>Practice Areas</label>
+                            <input type="text" class="form-control" name="practice_areas" autocomplete="off" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Short Quotes</label>
+                            <textarea name="quotes" class="form-control" required></textarea>
                         </div>
                         <div class="form-group mb-3">
                             <label>Image</label>
