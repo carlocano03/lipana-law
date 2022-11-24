@@ -41,8 +41,9 @@ class Home extends CI_Controller
 
     public function attorneys()
     {
+        $data['attorneys'] = $this->WebModel->getAttorneys();
         $this->load->view('website/partials/__header');
-        $this->load->view('website/attorneys');
+        $this->load->view('website/attorneys', $data);
         $this->load->view('website/partials/__footer');
         $this->load->view('website/ajaxRequest/consultationRequest');
     }

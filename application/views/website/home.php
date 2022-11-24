@@ -35,7 +35,7 @@
                     <div class="col-md-4 d-flex align-items-stretch">
                         <div class="services text-center">
                             <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="flaticon-lawyer"></span>
+                                <span class="flaticon-auction"></span>
                             </div>
                             <div class="text">
                                 <h3><?= isset($home->sec_one_title) ? $home->sec_one_title : '' ?></h3>
@@ -48,7 +48,7 @@
                     <div class="col-md-4 d-flex align-items-stretch">
                         <div class="services text-center">
                             <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="flaticon-lawyer"></span>
+                                <span class="flaticon-auction"></span>
                             </div>
                             <div class="text">
                                 <h3><?= isset($home->sec_two_title) ? $home->sec_two_title : '' ?></h3>
@@ -61,7 +61,7 @@
                     <div class="col-md-4 d-flex align-items-stretch">
                         <div class="services text-center">
                             <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="flaticon-lawyer"></span>
+                                <span class="flaticon-auction"></span>
                             </div>
                             <div class="text">
                                 <h3><?= isset($home->sec_three_title) ? $home->sec_three_title : '' ?></h3>
@@ -182,7 +182,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="block-2 ftco-animate">
                         <div class="flipper">
-                            <div class="front" style="background-image: url(webAssets/images/person_1.jpg);">
+                            <div class="front" style="background-image: url('<?= base_url('uploaded_file/attorneys/'.$row->image.'') ?>');">
                                 <div class="box">
                                     <h2><?= $row->name;?></h2>
                                     <p><?= $row->practice_area;?></p>
