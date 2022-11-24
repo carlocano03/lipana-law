@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url('<?= base_url('webAssets/images/testBG.jpg')?>');" data-stellar-background-ratio="0.5">
+<!-- <section class="hero-wrap hero-wrap-2" style="background-image: url('<?= base_url('webAssets/images/testBG.jpg') ?>');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -8,13 +8,17 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <section class="ftco-section ftco-no-pt ftco-no-pb">
     <div class="container">
+        <div class="text-center ">
+            <h1 class="mb-3 text-white text-center header-title">About Us</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url('') ?>">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>About us <i class="ion-ios-arrow-forward"></i></span></p>
+        </div>
         <div class="row d-flex">
             <div class="col-md-6 d-flex">
-                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="background-image:url(<?= base_url('webAssets/images/about.jpg')?>);">
+                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="background-image:url(<?= base_url('webAssets/images/about.jpg') ?>);">
                     <a href="<?= base_url('uploaded_file/corporateVideo/') ?><?= $about->corporate_video ?>" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
                         <span class="icon-play"></span>
                     </a>
@@ -72,7 +76,7 @@
     </div>
 </section>
 
-<section class="ftco-consultation ftco-section ftco-no-pt ftco-no-pb img" style="background-image: url(<?= base_url('webAssets/images/bg_2.jpg')?>);">
+<!-- <section class="ftco-consultation ftco-section ftco-no-pt ftco-no-pb img" style="background-image: url(<?= base_url('webAssets/images/bg_2.jpg') ?>);">
     <div class="overlay"></div>
     <div class="container">
         <div class="row d-md-flex justify-content-end">
@@ -98,4 +102,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->

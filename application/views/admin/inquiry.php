@@ -23,6 +23,13 @@
     #table_inquiry td:nth-child(5) {
         display: none;
     }
+
+    .short {
+        white-space: nowrap;
+        width: 500px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 </style>
 <div id="layoutSidenav_content">
     <main>

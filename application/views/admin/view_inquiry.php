@@ -17,10 +17,12 @@
                     <div class="message-section">
                         <div class="row">
                             <div class="col-md-6 profile-img">
-                                <div class="d-flex align-items-center">
+                                <div class="d-flex">
                                     <img src="<?= base_url('assets/img/avatar.png') ?>" alt="" class="rounded-circle me-2">
                                     <span><b><?= isset($inquiry->name_client) ? $inquiry->name_client : '' ?></b><br>
-                                        <span style="font-size:13px; font-style:italic;"><?= isset($inquiry->client_email) ? $inquiry->client_email : '' ?></span>
+                                        <span style="font-size:13px; font-style:italic;"><?= isset($inquiry->client_email) ? $inquiry->client_email : '' ?></span><br>
+                                        <span style="font-size:13px; font-style:italic;"><?= isset($inquiry->contact_no) ? $inquiry->contact_no : '' ?></span><br>
+                                        <span style="font-size:13px;"><?= isset($inquiry->address) ? $inquiry->address : '' ?></span>
                                     </span>
                                 </div>
                             </div>

@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="<?= base_url('webAssets/css/flaticon.css') ?>">
     <link rel="stylesheet" href="<?= base_url('webAssets/css/icomoon.css') ?>">
     <link rel="stylesheet" href="<?= base_url('webAssets/css/style.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('webAssets/css/custom-style.css') ?>">
 
     <style>
         body {
@@ -35,7 +36,7 @@
 
 <body>
 
-    <nav class="navbar px-md-0 navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar sticky-top px-md-0 navbar-expand-lg navbar-dark ftco_navbar bg-dark navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="<?= base_url('home') ?>">Lipana Law <span>Lipana . Bedural . Zoreta</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">

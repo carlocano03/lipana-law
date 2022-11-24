@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url('<?= base_url('webAssets/images/testBG.jpg') ?>');" data-stellar-background-ratio="0.5">
+<!-- <section class="hero-wrap hero-wrap-2" style="background-image: url('<?= base_url('webAssets/images/testBG.jpg') ?>');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -8,17 +8,21 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
-<section class="ftco-section">
+<section class="ftco-section ftco-no-pt ftco-no-pb">
     <div class="container-fluid px-md-5">
+        <div class="text-center ">
+            <h1 class="mb-3 text-white header-title">Expert Attorneys</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url('')?>">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Attorneys <i class="ion-ios-arrow-forward"></i></span></p>
+        </div>
         <div class="row d-flex justify-content-center">
 
             <?php foreach ($attorneys as $row) : ?>
                 <div class="col-lg-3 col-sm-6">
                     <div class="block-2 ftco-animate">
                         <div class="flipper">
-                            <div class="front" style="background-image: url('<?= base_url('uploaded_file/attorneys/'.$row->image.'') ?>');">
+                            <div class="front" style="background-image: url('<?= base_url('uploaded_file/attorneys/' . $row->image . '') ?>');">
                                 <div class="box">
                                     <h2><?= $row->name; ?></h2>
                                     <p><?= $row->practice_area; ?></p>

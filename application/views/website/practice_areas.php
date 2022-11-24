@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url('<?= base_url('webAssets/images/testBG.jpg') ?>');" data-stellar-background-ratio="0.5">
+<!-- <section class="hero-wrap hero-wrap-2" style="background-image: url('<?= base_url('webAssets/images/testBG.jpg') ?>');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -8,10 +8,14 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
-<section class="ftco-section">
+<section class="ftco-section ftco-no-pt ftco-no-pb">
     <div class="container">
+        <div class="text-center ">
+            <h1 class="mb-3 text-white header-title">Practice Areas</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url('') ?>">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Practice Areas <i class="ion-ios-arrow-forward"></i></span></p>
+        </div>
         <div class="row d-flex justify-content-center">
 
             <?php foreach ($areas as $row) : ?>
@@ -20,8 +24,8 @@
                         <div class="icon d-flex justify-content-center align-items-center">
                             <span class="flaticon-auction"></span>
                         </div>
-                        <h3><a href="#"><?= $row->practice_title;?></a></h3>
-                        <p><?= $row->short_desc;?></p>
+                        <h3><a href="#"><?= $row->practice_title; ?></a></h3>
+                        <p><?= $row->short_desc; ?></p>
                         <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></a>
                     </div>
                 </div>

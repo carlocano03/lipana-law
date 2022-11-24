@@ -12227,7 +12227,7 @@ h5,
 
 .tabulation-2 .nav-pills .nav-item .nav-link.active {
   color: #fff;
-  background: rgba(0, 13, 8, 1);
+  background: var(--lipana-color);
   border: 1px solid #1e272e;
 }
 

@@ -24,6 +24,7 @@ class Home extends CI_Controller
         $data['services'] = $this->WebModel->getServices();
         $data['home'] = $this->WebModel->getHome();
         $data['attorneys'] = $this->WebModel->getAttorneys();
+        $data['areas'] = $this->WebModel->getAreas();
         $this->load->view('website/partials/__header');
         $this->load->view('website/home', $data);
         $this->load->view('website/partials/__footer');
@@ -77,6 +78,22 @@ class Home extends CI_Controller
             'date_created' => $date_created,
         );
         $this->db->insert('contact_us', $insertConsultation);
+    }
+
+    public function sendlegalAdvice()
+    {
+        $date_created = date('Y-m-d H:i:s');
+        $insertAdvice = array(
+            'name_client' => $this->input->post('fname'),
+            'contact_no' => $this->input->post('contact'),
+            'address' => $this->input->post('address'),
+            'client_email' => $this->input->post('email'),
+            'message' => $this->input->post('message'),
+            'status' => 'Unread',
+            'practice_area' => $this->input->post('practice_area'),
+            'date_created' => $date_created,
+        );
+        $this->db->insert('inquiry', $insertAdvice);
     }
 
 }

@@ -328,7 +328,7 @@ class WebsiteSettings extends CI_Controller
 
             $row[] = $list->inquiry_id;
             $row[] = '<i class="bi bi-person-circle me-2"></i>' . $list->name_client;
-            $row[] = 'Subject: ' . $list->subject;
+            $row[] = '<div class="short" title="' . $list->message . '"><b>Message: </b>' . $list->message . '</div>';
             $row[] = date('D M j, Y', strtotime($list->date_created));
             $row[] = $list->status;
 

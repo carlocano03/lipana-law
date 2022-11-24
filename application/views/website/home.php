@@ -3,13 +3,12 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
             <div class="col-md-6 ftco-animate">
-                
                 <h1>Attorneys Fighting For Your
                     <span class="txt-rotate" data-period="2000" data-rotate='[ "Freedom.", "Rights.", "Case.", "Custody." ]'></span>
                 </h1>
                 <!-- <h1 class="mb-4">Attorneys Fighting For Your Freedom</h1> -->
                 <p class="mb-4">Welcome to Lipana.Bedural.Zoreta Law Office, we provide and fight for your cases.</p>
-                <p><a href="<?= base_url('home/practiceAreas')?>" class="btn btn-primary mr-md-4 py-2 px-4">Get Legal Advice <span class="ion-ios-arrow-forward"></span></a></p>
+                <p><a href="#modalAdvice" data-toggle="modal" class="btn btn-primary mr-md-4 py-2 px-4">Get Legal Advice <span class="ion-ios-arrow-forward"></span></a></p>
             </div>
         </div>
     </div>
@@ -180,17 +179,17 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="block-2 ftco-animate">
                         <div class="flipper">
-                            <div class="front" style="background-image: url('<?= base_url('uploaded_file/attorneys/'.$row->image.'') ?>');">
+                            <div class="front" style="background-image: url('<?= base_url('uploaded_file/attorneys/' . $row->image . '') ?>');">
                                 <div class="box">
-                                    <h2><?= $row->name;?></h2>
-                                    <p><?= $row->practice_area;?></p>
+                                    <h2><?= $row->name; ?></h2>
+                                    <p><?= $row->practice_area; ?></p>
                                 </div>
                             </div>
                             <div class="back">
                                 <!-- back content -->
                                 <blockquote>
                                     <p>
-                                        &ldquo; <?= $row->short_quotes;?> &rdquo;
+                                        &ldquo; <?= $row->short_quotes; ?> &rdquo;
                                     </p>
                                 </blockquote>
                                 <div class="text-center" style="margin-top:170px;">
@@ -198,9 +197,9 @@
                                 </div>
                                 <div class="author d-flex">
                                     <div class="image align-self-center">
-                                        <img src="<?= base_url('uploaded_file/attorneys/'.$row->image.'') ?>" alt="">
+                                        <img src="<?= base_url('uploaded_file/attorneys/' . $row->image . '') ?>" alt="">
                                     </div>
-                                    <div class="name align-self-center ml-3"><?= $row->name;?> <span class="position"><?= $row->practice_area;?></span></div>
+                                    <div class="name align-self-center ml-3"><?= $row->name; ?> <span class="position"><?= $row->practice_area; ?></span></div>
                                 </div>
                             </div>
                         </div>
@@ -240,3 +239,50 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="modalAdvice" tabindex="-1" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Get Legal Advice</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="legalAdvice">
+                    <div class="form-group mb-3">
+                        <input type="text" name="fname" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="text" name="address" class="form-control" placeholder="Your Address" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="text" name="contact" class="form-control" placeholder="Your Contact No" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <hr>
+                    <div class="form-group mb-3">
+                        <label>Practice Areas</label>
+                        <select class="custom-select" name="practice_area" id="inputGroupSelect01" required>
+                            <option value="">Please select</option>
+                            <?php foreach($areas as $row) : ?>
+                                <option value="<?= $row->practice_title?>"><?= $row->practice_title?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" cols="30" rows="7" class="form-control" placeholder="Initial Case Story" required></textarea>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger">Send Inquiry</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
