@@ -212,7 +212,7 @@
 </section>
 
 
-<section class="ftco-consultation ftco-section ftco-no-pt ftco-no-pb img" style="background-image: url(webAssets/images/bg_2.jpg);" id="consultation">
+<section class="ftco-consultation ftco-section ftco-no-pt ftco-no-pb img" style="background-image: url(webAssets/images/bgcontact.jpg);" id="consultation">
     <div class="overlay"></div>
     <div class="container">
         <div class="row d-md-flex justify-content-end">
