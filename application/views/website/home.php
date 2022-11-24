@@ -3,14 +3,12 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
             <div class="col-md-6 ftco-animate">
-                <h2 class="subheading">Welcome To Lipana Law</h2>
+                
                 <h1>Attorneys Fighting For Your
                     <span class="txt-rotate" data-period="2000" data-rotate='[ "Freedom.", "Rights.", "Case.", "Custody." ]'></span>
                 </h1>
                 <!-- <h1 class="mb-4">Attorneys Fighting For Your Freedom</h1> -->
-                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua.</p>
+                <p class="mb-4">Welcome to Lipana.Bedural.Zoreta Law Office, we provide and fight for your cases.</p>
                 <p><a href="<?= base_url('home/practiceAreas')?>" class="btn btn-primary mr-md-4 py-2 px-4">Get Legal Advice <span class="ion-ios-arrow-forward"></span></a></p>
             </div>
         </div>
