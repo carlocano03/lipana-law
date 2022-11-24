@@ -44,7 +44,7 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item <?= ($this->uri->segment(1) == '' ? 'active' : '') ?>"><a href="<?= base_url('home') ?>" class="nav-link">Home</a></li>
+                    <li class="nav-item <?= ($this->uri->segment(1) == '' ? 'active' : '') ?>"><a href="<?= base_url('') ?>" class="nav-link">Home</a></li>
                     <li class="nav-item <?= ($this->uri->segment(2) == 'about' ? 'active' : '') ?>"><a href="<?= base_url('home/about') ?>" class="nav-link">About</a></li>
                     <li class="nav-item <?= ($this->uri->segment(2) == 'attorneys' ? 'active' : '') ?>"><a href="<?= base_url('home/attorneys') ?>" class="nav-link">Attorneys</a></li>
                     <li class="nav-item <?= ($this->uri->segment(2) == 'practiceAreas' ? 'active' : '') ?>"><a href="<?= base_url('home/practiceAreas') ?>" class="nav-link">Practice Areas</a></li>

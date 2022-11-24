@@ -11,7 +11,7 @@
                 <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                     ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                     ut labore et dolore magna aliqua.</p>
-                <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4">Get Legal Advice <span class="ion-ios-arrow-forward"></span></a></p>
+                <p><a href="<?= base_url('home/practiceAreas')?>" class="btn btn-primary mr-md-4 py-2 px-4">Get Legal Advice <span class="ion-ios-arrow-forward"></span></a></p>
             </div>
         </div>
     </div>

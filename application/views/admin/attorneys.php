@@ -66,7 +66,7 @@
                             <textarea name="quotes" class="form-control" required></textarea>
                         </div>
                         <div class="form-group mb-3">
-                            <label>Image</label>
+                            <label>Image <small class="text-danger">(Size: w-11.11/inches x h-13.29/inches)</small></label>
                             <input type="file" name="inpFile" class="form-control" accept="image/*" required>
                         </div>
                 </div>
