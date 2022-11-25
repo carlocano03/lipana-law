@@ -68,10 +68,10 @@
             <div class="col-md-12 text-center">
 
                 <p>
-                    Copyright &copy; Lipana-Law
-                    <script>
+                    Copyright &copy; Lipana Law 2023 - Software Provider: the BOX Software Developers Ltd.
+                    <!-- <script>
                         document.write(new Date().getFullYear());
-                    </script> All rights reserved | Powered by: theBox-Software Developer
+                    </script> Software Provider: the BOX Software Developers Ltd. -->
                 </p>
             </div>
         </div>

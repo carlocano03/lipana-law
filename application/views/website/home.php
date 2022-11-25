@@ -149,7 +149,11 @@
                 <div class="carousel-case owl-carousel ftco-owl">
                     <?php foreach ($services as $row) : ?>
                         <div class="item">
-                            <div class="case img d-flex align-items-center justify-content-center" style="background-image: url(uploaded_file/services/<?= $row->service_image; ?>);">
+                            <?php if($row->service_image == NULL) : ?>
+                                <div class="case img d-flex align-items-center justify-content-center" style="background-image: url(<?= base_url('webAssets/images/logo.png')?>);">
+                            <?php else :?>
+                                <div class="case img d-flex align-items-center justify-content-center" style="background-image: url(<?= base_url('uploaded_file/services/'.$row->service_image.'')?>);">
+                            <?php endif; ?>
                                 <div class="text text-center p-3">
                                     <h3><a href="#"><?= isset($row->service_title) ? $row->service_title : '' ?></a></h3>
                                     <div class="short-desc" style="background: #fff; padding:5px; border-radius:10px;">

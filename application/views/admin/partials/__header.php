@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link href="<?= base_url('assets/img/icon.png') ?>" rel="icon">
+    <link href="<?= base_url('assets/img/logo.png') ?>" rel="icon">
     <title>Lipana Law | Lipana . Bedural . Zoreta</title>
     <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">

@@ -170,6 +170,7 @@ class Main extends CI_Controller
 
             $row[] = '<button class="btn btn-secondary btn-sm add_permission" title="Add Permission" id="' . $account->user_id . '"><i class="bi bi-person-fill-gear me-2"></i>Add Permission</butto>';
             $row[] = $account->username;
+            $row[] = $account->user_status;
             $row[] = $account->fullname;
             $row[] = date('D F j, Y h:i a', strtotime($account->created_at));
 

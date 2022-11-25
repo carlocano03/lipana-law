@@ -1,6 +1,6 @@
 <style>
     #table_account td:nth-child(1),
-    #table_account td:nth-child(5) {
+    #table_account td:nth-child(6) {
         text-align: center;
     }
 
@@ -45,6 +45,7 @@
                                 <tr>
                                     <th class="text-center">Action</th>
                                     <th>Username</th>
+                                    <th>Password</th>
                                     <th>Fullname</th>
                                     <th>Date Created</th>
                                     <th class="text-center">Status</th>

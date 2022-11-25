@@ -25,6 +25,7 @@ class WebsiteSettings extends CI_Controller
     {
         $date_created = date('Y-m-d H:i:s');
         $videoID = 'VD' . time() . rand(10, 1000);
+        $videoID = 'IMG' . time() . rand(10, 1000);
         if (!empty($_FILES['inpFile']['name'])) {
             $extension = explode('.', $_FILES['inpFile']['name']);
             $new_name = $videoID . '.' . $extension[1];
@@ -44,13 +45,34 @@ class WebsiteSettings extends CI_Controller
             $uploadFile = '';
         }
 
+        if (!empty($_FILES['about_image']['name'])) {
+            $extension = explode('.', $_FILES['about_image']['name']);
+            $new_name = $videoID . '.' . $extension[1];
+            $config['upload_path'] = 'uploaded_file/corporateVideo';
+            $config['allowed_types'] = 'mp4|jpg|png';
+            $config['file_name'] = $new_name;
+            $this->load->library('upload', $config);
+            $this->upload->display_errors();
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('about_image')) {
+                $uploadImg = $this->upload->data();
+                $uploadAbout = $uploadImg['file_name'];
+            } else {
+                $uploadAbout = '';
+            }
+        } else {
+            $uploadAbout = '';
+        }
+
         $insertAbout = array(
             'title' => str_replace("'", "", $this->input->post('title')),
+            'about_years' => $this->input->post('year'),
             'about_desc' => str_replace("'", "", $this->input->post('about_us')),
             'mission' => str_replace("'", "", $this->input->post('mission')),
             'vision' => str_replace("'", "", $this->input->post('vision')),
             'our_values' => str_replace("'", "", $this->input->post('values')),
             'corporate_video' => $uploadFile,
+            'about_image' => $uploadAbout,
             'date_added' => $date_created,
         );
         $this->db->insert('about_us', $insertAbout);
@@ -72,7 +94,7 @@ class WebsiteSettings extends CI_Controller
             $row[] = '<div class="short" title="' . $about->mission . '">' . $about->mission . '</div>';
             $row[] = '<div class="short" title="' . $about->vision . '">' . $about->vision . '</div>';
             $row[] = '<div class="short" title="' . $about->our_values . '">' . $about->our_values . '</div>';
-            $row[] = $about->corporate_video;
+            $row[] = $about->about_years;
 
             $data[] = $row;
         }
@@ -95,7 +117,8 @@ class WebsiteSettings extends CI_Controller
             $row = array();
 
 
-            $row[] = $services->service_title;
+            $row[] = '<div>' . $services->service_title . '</div>
+                      <span class="span-link update_service" title="Edit" id="' . $services->service_id . '"><i class="bi bi-pencil-square me-1"></i>Edit Services</span>';
             $row[] = $services->short_desc;
             $row[] = $services->service_image;
             $row[] = '<button class="btn btn-danger btn-sm delete_services" id="' . $services->service_id . '"><i class="bi bi-trash3-fill me-2"></i>Delete</button>';
@@ -400,6 +423,7 @@ class WebsiteSettings extends CI_Controller
         $query = $this->db->get('about_us')->result();
         foreach ($query as $row) {
             $output['title'] = $row->title;
+            $output['year'] = $row->about_years;
             $output['about_us'] = $row->about_desc;
             $output['mission'] = $row->mission;
             $output['vision'] = $row->vision;
@@ -433,13 +457,34 @@ class WebsiteSettings extends CI_Controller
                     $uploadFile = '';
                 }
 
+                if (!empty($_FILES['about_image']['name'])) {
+                    $extension = explode('.', $_FILES['about_image']['name']);
+                    $new_name = $videoID . '.' . $extension[1];
+                    $config['upload_path'] = 'uploaded_file/corporateVideo';
+                    $config['allowed_types'] = 'mp4|jpg|png';
+                    $config['file_name'] = $new_name;
+                    $this->load->library('upload', $config);
+                    $this->upload->display_errors();
+                    $this->upload->initialize($config);
+                    if ($this->upload->do_upload('about_image')) {
+                        $uploadImg = $this->upload->data();
+                        $uploadAbout = $uploadImg['file_name'];
+                    } else {
+                        $uploadAbout = '';
+                    }
+                } else {
+                    $uploadAbout = '';
+                }
+
                 $updateAbout = array(
                     'title' => str_replace("'", "", $this->input->post('title')),
+                    'about_years' => $this->input->post('year'),
                     'about_desc' => str_replace("'", "", $this->input->post('about_us')),
                     'mission' => str_replace("'", "", $this->input->post('mission')),
                     'vision' => str_replace("'", "", $this->input->post('vision')),
                     'our_values' => str_replace("'", "", $this->input->post('values')),
                     'corporate_video' => $uploadFile,
+                    'corporate_video' => $uploadAbout,
                 );
                 $this->db->where('about_id', $this->input->post('about_id'))->update('about_us', $updateAbout);
                 break;
@@ -447,6 +492,7 @@ class WebsiteSettings extends CI_Controller
             default:
                 $updateAbout = array(
                     'title' => str_replace("'", "", $this->input->post('title')),
+                    'about_years' => $this->input->post('year'),
                     'about_desc' => str_replace("'", "", $this->input->post('about_us')),
                     'mission' => str_replace("'", "", $this->input->post('mission')),
                     'vision' => str_replace("'", "", $this->input->post('vision')),
@@ -531,5 +577,61 @@ class WebsiteSettings extends CI_Controller
             'why_select_us' => str_replace("'", "", $this->input->post('why_select_us')),
         );
         $this->db->where('section_id', $this->input->post('home_id'))->update('home_section', $updateHome);
+    }
+
+    public function getServiceData()
+    {
+        $serviceID = $this->input->post('serviceID');
+        $output = array();
+        $this->db->where('service_id', $serviceID);
+        $query = $this->db->get('services')->result();
+        foreach ($query as $row) {
+            $output['title'] = $row->service_title;
+            $output['short_desc'] = $row->short_desc;
+        }
+        echo json_encode($output);
+    }
+
+    public function updateServices()
+    {
+        $options = $this->input->post('update_services');
+        switch ($options) {
+            case '2':
+                $imgID = 'IMG' . time() . rand(10, 1000);
+                if (!empty($_FILES['inpFile']['name'])) {
+                    $extension = explode('.', $_FILES['inpFile']['name']);
+                    $new_name = $imgID . '.' . $extension[1];
+                    $config['upload_path'] = 'uploaded_file/services';
+                    $config['allowed_types'] = 'mp4|jpg|png|jpeg|gif';
+                    $config['file_name'] = $new_name;
+                    $this->load->library('upload', $config);
+                    $this->upload->display_errors();
+                    $this->upload->initialize($config);
+                    if ($this->upload->do_upload('inpFile')) {
+                        $uploadData = $this->upload->data();
+                        $uploadFile = $uploadData['file_name'];
+                    } else {
+                        $uploadFile = '';
+                    }
+                } else {
+                    $uploadFile = '';
+                }
+
+                $updateServices = array(
+                    'service_title' => str_replace("'", "", $this->input->post('title')),
+                    'short_desc' => str_replace("'", "", $this->input->post('short_desc')),
+                    'service_image' => $uploadFile,
+                );
+                $this->db->where('service_id', $this->input->post('service_id'))->update('services', $updateServices);
+                break;
+
+            default:
+                $updateServices = array(
+                    'service_title' => str_replace("'", "", $this->input->post('title')),
+                    'short_desc' => str_replace("'", "", $this->input->post('short_desc')),
+                );
+                $this->db->where('service_id', $this->input->post('service_id'))->update('services', $updateServices);
+                break;
+        }
     }
 }

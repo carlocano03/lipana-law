@@ -430,6 +430,7 @@
         });
 
         $('#update_video').hide('300');
+        $('#update_image').hide('300');
         $(document).on('click', '.update_about', function() {
             var aboutID = $(this).attr('id');
             $.ajax({
@@ -441,6 +442,7 @@
                     $('#modalEditAbout').modal('show');
                     $('#about_id').val(aboutID);
                     $('#title').val(data.title);
+                    $('#year').val(data.year);
                     $('#about_us').val(data.about_us);
                     $('#mission').text(data.mission);
                     $('#vision').text(data.vision);
@@ -455,11 +457,15 @@
                 case '2':
                     $('#update_video').show('300');
                     $('#inpFile').prop('required', true);
+                    $('#update_image').show('300');
+                    $('#about_image').prop('required', true);
                     break;
             
                 default:
                     $('#update_video').hide('300');
                     $('#inpFile').prop('required', false);
+                    $('#update_image').hide('300');
+                    $('#about_image').prop('required', false);
                     break;
             }
         });
@@ -537,5 +543,65 @@
                 }
             });
         });
+
+        $('#update_serviceImg').hide('300');
+        $(document).on('click', '.update_service', function() {
+            var serviceID = $(this).attr('id');
+            $.ajax({
+                url:"<?= base_url('WebsiteSettings/getServiceData')?>",
+                method:"POST",
+                data:{serviceID:serviceID},
+                dataType:"json",
+                success:function(data) {
+                    $('#modalServiceUpdate').modal('show');
+                    $('#service_id').val(serviceID);
+
+                    $('#title').val(data.title);
+                    $('#short_desc').val(data.short_desc);
+                }
+            });
+        });
+
+        $(document).on('change', '#update_services', function() {
+            var trans = $(this).val();
+            switch (trans) {
+                case '2':
+                    $('#update_serviceImg').show('300');
+                    $('#inpFile').prop('required', true);
+                    break;
+            
+                default:
+                    $('#update_serviceImg').hide('300');
+                    $('#inpFile').prop('required', false);
+                    break;
+            }
+        });
+
+        $(document).on('submit', '#updateServices', function(event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            $.ajax({
+                url: "<?= base_url() . 'WebsiteSettings/updateServices' ?>",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    Swal.fire(
+                        'Thank you!',
+                        'Updated successfully.',
+                        'success'
+                    );
+                    $('#modalServiceUpdate').modal('hide');
+                    $('#updateServices').trigger('reset');
+                    tableServices.draw();
+                },
+                error: function() {
+                    Swal.fire('Error!', 'Something went wrong. Please try again later!', 'error');
+                }
+            });
+        });
+
     });
 </script>

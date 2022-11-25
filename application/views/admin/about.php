@@ -34,7 +34,7 @@
                                     <th>Mission</th>
                                     <th>Vision</th>
                                     <th>Values</th>
-                                    <th>Video</th>
+                                    <th>Year</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,6 +62,10 @@
                             <input type="text" class="form-control" name="title" autocomplete="off" required>
                         </div>
                         <div class="form-group mb-3">
+                            <label>Year</label>
+                            <input type="number" class="form-control" name="year" autocomplete="off" required>
+                        </div>
+                        <div class="form-group mb-3">
                             <label>About Us Descriptions</label>
                             <textarea name="about_us" class="form-control" required></textarea>
                         </div>
@@ -80,6 +84,10 @@
                         <div class="form-group mb-3">
                             <label>Corporate Video</label>
                             <input type="file" name="inpFile" class="form-control" accept="video/*" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>About Image <small class="text-danger">(Size: w-20.83inches x h-17.54)</small></label>
+                            <input type="file" name="about_image" class="form-control" accept="image/*" required>
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -104,13 +112,17 @@
                             <select class="form-select" name="update_trans" id="update_trans" aria-label="Floating label select example" required>
                                 <option value="">Select update transaction</option>
                                 <option value="1">Edit Details Only</option>
-                                <option value="2">Edit Details & Re-upload video</option>
+                                <option value="2">Edit Details & Re-upload video and image</option>
                             </select>
                             <label for="floatingSelect">Update Functions</label>
                         </div>
                         <div class="form-group mb-3">
                             <label>Title</label>
                             <input type="text" class="form-control" id="title" name="title" autocomplete="off">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Year</label>
+                            <input type="number" class="form-control" name="year" id="year" autocomplete="off" required>
                         </div>
                         <div class="form-group mb-3">
                             <label>About Us Descriptions</label>
@@ -131,6 +143,10 @@
                         <div class="form-group mb-3" id="update_video">
                             <label>Corporate Video</label>
                             <input type="file" name="inpFile" id="inpFile" class="form-control" accept="video/*">
+                        </div>
+                        <div class="form-group mb-3" id="update_image">
+                            <label>About Image <small class="text-danger">(Size: w-20.83inches x h-17.54)</small></label>
+                            <input type="file" name="about_image" id="about_image" class="form-control" accept="image/*" required>
                         </div>
                 </div>
                 <div class="modal-footer">

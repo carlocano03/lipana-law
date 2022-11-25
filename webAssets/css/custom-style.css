@@ -240,11 +240,24 @@
 }
 
 .header-title {
-  font-size: 40px;
-  color: #fff;
-  line-height: 1.5;
-  font-weight: 600;
-  font-family: "Poppins", Arial, sans-serif;
-  text-decoration: 3px underline var(--lipana-color);
-  text-underline-offset: 10px;
+    font-size: 40px;
+    color: #fff;
+    line-height: 1.5;
+    font-weight: 600;
+    font-family: "Poppins", Arial, sans-serif;
+    text-decoration: 3px underline var(--lipana-color);
+    text-underline-offset: 10px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bdc3c7;
 }
