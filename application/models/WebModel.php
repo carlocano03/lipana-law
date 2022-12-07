@@ -54,6 +54,7 @@ class WebModel extends CI_Model
     {
         $this->db->limit(4);
         $this->db->order_by('attorney_id', 'DESC');
+        $this->db->where('is_deleted', NULL);
         $query = $this->db->get('attorneys');
         return $query->result();
     }
