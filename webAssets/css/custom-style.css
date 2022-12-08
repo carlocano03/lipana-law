@@ -145,6 +145,11 @@
     outline: none !important;
 }
 
+.navbar-light .navbar-brand:hover,
+.navbar-light .navbar-brand:focus {
+  color: var(--lipana-color);
+}
+
 .navbar-light.scrolled {
     position: fixed;
     right: 0;
