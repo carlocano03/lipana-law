@@ -18,7 +18,7 @@
         </div>
         <div class="row d-flex">
             <div class="col-md-6 d-flex">
-                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="background-image:url(<?= base_url('webAssets/images/about.jpg') ?>);">
+                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="background-image:url(<?= base_url('webAssets/images/about-img.jpg') ?>);">
                     <a href="<?= base_url('uploaded_file/corporateVideo/') ?><?= $about->corporate_video ?>" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
                         <span class="icon-play"></span>
                     </a>

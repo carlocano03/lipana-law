@@ -1,4 +1,25 @@
-<div class="hero-wrap js-fullheight" style="background-image: url('webAssets/images/landing-page.jpg');" data-stellar-background-ratio="0.5">
+<style>
+    #hero-img {
+        background-image: url('webAssets/images/landing-page.jpg');
+    }
+
+    @media only screen and (max-width: 768px) {
+        #hero-img {
+            background-image: url('webAssets/images/about-img.jpg');
+        }
+    }
+    @media only screen and (max-width: 820px) {
+        #hero-img {
+            background-image: url('webAssets/images/about-img.jpg');
+        }
+    }
+    @media only screen and (max-width: 912px) {
+        #hero-img {
+            background-image: url('webAssets/images/about-img.jpg');
+        }
+    }
+</style>
+<div class="hero-wrap js-fullheight" id="hero-img" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
@@ -78,7 +99,7 @@
     <div class="container">
         <div class="row d-flex">
             <div class="col-md-6 d-flex">
-                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="background-image:url(webAssets/images/about.jpg);">
+                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="background-image:url(webAssets/images/about-img.jpg);">
                     <a href="<?= base_url('uploaded_file/corporateVideo/') ?><?= $about->corporate_video ?>" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
                         <span class="icon-play"></span>
                     </a>
@@ -149,24 +170,24 @@
                 <div class="carousel-case owl-carousel ftco-owl">
                     <?php foreach ($services as $row) : ?>
                         <div class="item">
-                            <?php if($row->service_image == NULL) : ?>
-                                <div class="case img d-flex align-items-center justify-content-center" style="background-image: url(<?= base_url('webAssets/images/logo.png')?>);">
-                            <?php else :?>
-                                <div class="case img d-flex align-items-center justify-content-center" style="background-image: url(<?= base_url('uploaded_file/services/'.$row->service_image.'')?>);">
-                            <?php endif; ?>
-                                <div class="text text-center p-3">
-                                    <h3><a href="#"><?= isset($row->service_title) ? $row->service_title : '' ?></a></h3>
-                                    <div class="short-desc" style="background: #fff; padding:5px; border-radius:10px;">
-                                        <span style="color:#3498db"><?= isset($row->short_desc) ? $row->short_desc : '' ?></span>
+                            <?php if ($row->service_image == NULL) : ?>
+                                <div class="case img d-flex align-items-center justify-content-center" style="background-image: url(<?= base_url('webAssets/images/logo.png') ?>);">
+                                <?php else : ?>
+                                    <div class="case img d-flex align-items-center justify-content-center" style="background-image: url(<?= base_url('uploaded_file/services/' . $row->service_image . '') ?>);">
+                                    <?php endif; ?>
+                                    <div class="text text-center p-3">
+                                        <h3><a href="#"><?= isset($row->service_title) ? $row->service_title : '' ?></a></h3>
+                                        <div class="short-desc" style="background: #fff; padding:5px; border-radius:10px;">
+                                            <span style="color:#3498db"><?= isset($row->short_desc) ? $row->short_desc : '' ?></span>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
-                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
-    </div>
 </section>
 
 <section class="ftco-section ftco-no-pt">
@@ -273,8 +294,8 @@
                         <label>Practice Areas</label>
                         <select class="custom-select" name="practice_area" id="inputGroupSelect01" required>
                             <option value="">Please select</option>
-                            <?php foreach($areas as $row) : ?>
-                                <option value="<?= $row->practice_title?>"><?= $row->practice_title?></option>
+                            <?php foreach ($areas as $row) : ?>
+                                <option value="<?= $row->practice_title ?>"><?= $row->practice_title ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
