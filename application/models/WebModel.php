@@ -44,7 +44,8 @@ class WebModel extends CI_Model
     }
 
     function getAreas()
-    {
+    {   
+        $this->db->where('is_deleted', NULL);
         $this->db->order_by('practice_id', 'DESC');
         $query = $this->db->get('practice_area');
         return $query->result();

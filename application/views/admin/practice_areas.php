@@ -3,7 +3,7 @@
         text-align: justify;
     }
 
-    #table_area :nth-child(4) {
+    #table_area td:nth-child(1) {
         text-align: center;
     }
 </style>
@@ -26,10 +26,10 @@
                         <table class="table table-hover" width="100%" cellspacing="0" id="table_area">
                             <thead>
                                 <tr>
+                                    <th class="text-center">Action</th>
                                     <th>Practice Area</th>
                                     <th>Short Descriptions</th>
-                                    <th>Image</th>
-                                    <th class="text-center">Action</th>
+                                    <!-- <th>Image</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,10 +60,41 @@
                             <label>Short Descriptions</label>
                             <textarea name="short_desc" class="form-control" required></textarea>
                         </div>
-                        <div class="form-group mb-3">
+                        <!-- <div class="form-group mb-3">
                             <label>Image</label>
                             <input type="file" name="inpFile" class="form-control" accept="image/*" required>
+                        </div> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-x-square-fill me-2"></i>Close</button>
+                    <button type="submit" class="btn btn-outline-primary btn-sm"><i class="bi bi-save-fill me-2"></i>Save Changes</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalEditPracticeArea" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 style="color: #1e272e;"><i class="bi bi-list-columns-reverse me-2"></i>Practice Areas</h5>
+                    <hr>
+                    <form id="editPracticeArea" enctype="multipart/form-data">
+                        <input type="hidden" id="practice_id" name="practice_id">
+                        <div class="form-group mb-3">
+                            <label>Practice Area</label>
+                            <input type="text" class="form-control" name="title" id="title" autocomplete="off" required>
                         </div>
+                        <div class="form-group mb-3">
+                            <label>Short Descriptions</label>
+                            <textarea name="short_desc" class="form-control" id="short_desc" required></textarea>
+                        </div>
+                        <!-- <div class="form-group mb-3">
+                            <label>Image</label>
+                            <input type="file" name="inpFile" class="form-control" accept="image/*" required>
+                        </div> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-x-square-fill me-2"></i>Close</button>

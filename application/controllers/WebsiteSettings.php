@@ -195,10 +195,11 @@ class WebsiteSettings extends CI_Controller
             $no++;
             $row = array();
 
+            $row[] = '<button class="btn btn-danger btn-sm delete_practice" id="' . $area->practice_id . '"><i class="bi bi-trash3-fill me-2"></i>Delete</button>
+                      <button class="btn btn-secondary btn-sm update_practice" id="' . $area->practice_id . '"><i class="bi bi-pencil-square me-2"></i>Edit</button>';
             $row[] = $area->practice_title;
             $row[] = $area->short_desc;
-            $row[] = $area->image;
-            $row[] = '<button class="btn btn-danger btn-sm delete_practice" id="' . $area->practice_id . '"><i class="bi bi-trash3-fill me-2"></i>Delete</button>';
+            // $row[] = $area->image;
 
             $data[] = $row;
         }
@@ -223,7 +224,8 @@ class WebsiteSettings extends CI_Controller
             $row[] = $area->name;
             $row[] = $area->practice_area;
             $row[] = $area->short_quotes;
-            $row[] = '<button class="btn btn-danger btn-sm delete_attroney" id="' . $area->attorney_id . '"><i class="bi bi-trash3-fill me-2"></i>Delete</button>';
+            $row[] = '<button class="btn btn-danger btn-sm delete_attroney" id="' . $area->attorney_id . '"><i class="bi bi-trash3-fill me-2"></i>Delete</button>
+                      <button class="btn btn-secondary btn-sm update_attroney" id="' . $area->attorney_id . '"><i class="bi bi-pencil-square me-2"></i>Edit</button>';
 
             $data[] = $row;
         }
@@ -239,30 +241,30 @@ class WebsiteSettings extends CI_Controller
     public function addPracticeArea()
     {
         $date_created = date('Y-m-d H:i:s');
-        $imgID = 'ICN' . time() . rand(10, 1000);
-        if (!empty($_FILES['inpFile']['name'])) {
-            $extension = explode('.', $_FILES['inpFile']['name']);
-            $new_name = $imgID . '.' . $extension[1];
-            $config['upload_path'] = 'uploaded_file/practiceArea';
-            $config['allowed_types'] = 'mp4|jpg|png|jpeg|gif';
-            $config['file_name'] = $new_name;
-            $this->load->library('upload', $config);
-            $this->upload->display_errors();
-            $this->upload->initialize($config);
-            if ($this->upload->do_upload('inpFile')) {
-                $uploadData = $this->upload->data();
-                $uploadFile = $uploadData['file_name'];
-            } else {
-                $uploadFile = '';
-            }
-        } else {
-            $uploadFile = '';
-        }
+        // $imgID = 'ICN' . time() . rand(10, 1000);
+        // if (!empty($_FILES['inpFile']['name'])) {
+        //     $extension = explode('.', $_FILES['inpFile']['name']);
+        //     $new_name = $imgID . '.' . $extension[1];
+        //     $config['upload_path'] = 'uploaded_file/practiceArea';
+        //     $config['allowed_types'] = 'mp4|jpg|png|jpeg|gif';
+        //     $config['file_name'] = $new_name;
+        //     $this->load->library('upload', $config);
+        //     $this->upload->display_errors();
+        //     $this->upload->initialize($config);
+        //     if ($this->upload->do_upload('inpFile')) {
+        //         $uploadData = $this->upload->data();
+        //         $uploadFile = $uploadData['file_name'];
+        //     } else {
+        //         $uploadFile = '';
+        //     }
+        // } else {
+        //     $uploadFile = '';
+        // }
 
         $insertPractice = array(
             'practice_title' => str_replace("'", "", $this->input->post('title')),
             'short_desc' => str_replace("'", "", $this->input->post('short_desc')),
-            'image' => $uploadFile,
+            // 'image' => $uploadFile,
             'date_created' => $date_created,
         );
         $this->db->insert('practice_area', $insertPractice);
@@ -631,6 +633,90 @@ class WebsiteSettings extends CI_Controller
                     'short_desc' => str_replace("'", "", $this->input->post('short_desc')),
                 );
                 $this->db->where('service_id', $this->input->post('service_id'))->update('services', $updateServices);
+                break;
+        }
+    }
+
+    public function getPA_data()
+    {
+        $practiceID = $this->input->post('practice_id');
+        $output = array();
+        $this->db->where('practice_id', $practiceID);
+        $query = $this->db->get('practice_area')->result();
+        foreach ($query as $row) {
+            $output['title'] = $row->practice_title;
+            $output['short_desc'] = $row->short_desc;
+        }
+        echo json_encode($output);
+    }
+
+    public function editPracticeArea()
+    {
+        $message = '';
+        $practiceID = $this->input->post('practice_id');
+        $date_created = date('Y-m-d H:i:s');
+        $updatePracticeArea = array(
+            'practice_title' => $this->input->post('title'),
+            'short_desc' => $this->input->post('short_desc'),
+        );
+        $this->db->where('practice_id', $practiceID)->update('practice_area', $updatePracticeArea);
+    }
+
+    public function getAttorney_data()
+    {
+        $attorney_id = $this->input->post('attorney_id');
+        $output = array();
+        $this->db->where('attorney_id', $attorney_id);
+        $query = $this->db->get('attorneys')->result();
+        foreach ($query as $row) {
+            $output['name'] = $row->name;
+            $output['practice_areas'] = $row->practice_area;
+            $output['quotes'] = $row->short_quotes;
+        }
+        echo json_encode($output);
+    }
+
+    public function updateAttorney()
+    {
+        $options = $this->input->post('update_attroney');
+        switch ($options) {
+            case '2':
+                $imgID = 'ATTY' . time() . rand(10, 1000);
+                if (!empty($_FILES['inpFile']['name'])) {
+                    $extension = explode('.', $_FILES['inpFile']['name']);
+                    $new_name = $imgID . '.' . $extension[1];
+                    $config['upload_path'] = 'uploaded_file/attorneys';
+                    $config['allowed_types'] = 'mp4|jpg|png|jpeg|gif';
+                    $config['file_name'] = $new_name;
+                    $this->load->library('upload', $config);
+                    $this->upload->display_errors();
+                    $this->upload->initialize($config);
+                    if ($this->upload->do_upload('inpFile')) {
+                        $uploadData = $this->upload->data();
+                        $uploadFile = $uploadData['file_name'];
+                    } else {
+                        $uploadFile = '';
+                    }
+                } else {
+                    $uploadFile = '';
+                }
+
+                $updateServices = array(
+                    'name' => str_replace("'", "", $this->input->post('name')),
+                    'practice_area' => str_replace("'", "", $this->input->post('practice_areas')),
+                    'short_quotes' => str_replace("'", "", $this->input->post('quotes')),
+                    'image' => $uploadFile,
+                );
+                $this->db->where('attorney_id', $this->input->post('attorney_id'))->update('attorneys', $updateServices);
+                break;
+
+            default:
+                $updateServices = array(
+                    'name' => str_replace("'", "", $this->input->post('name')),
+                    'practice_area' => str_replace("'", "", $this->input->post('practice_areas')),
+                    'short_quotes' => str_replace("'", "", $this->input->post('quotes')),
+                );
+                $this->db->where('attorney_id', $this->input->post('attorney_id'))->update('attorneys', $updateServices);
                 break;
         }
     }

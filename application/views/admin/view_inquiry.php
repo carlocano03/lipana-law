@@ -12,7 +12,7 @@
                     <i class="fas fa-archive me-2"></i>Inquiry Reports
                 </div>
                 <div class="card-body">
-                    <p class="fw-bold">Subject: <?= isset($inquiry->subject) ? $inquiry->subject : '' ?><span class="badge bg-secondary ms-2">Inbox</span></p>
+                    <p class="fw-bold">Practice Areas: <?= isset($inquiry->practice_area) ? $inquiry->practice_area : '' ?><span class="badge bg-secondary ms-2">Inbox</span></p>
                     <hr>
                     <div class="message-section">
                         <div class="row">

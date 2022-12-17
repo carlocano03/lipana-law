@@ -545,6 +545,7 @@
         });
 
         $('#update_serviceImg').hide('300');
+        $('#update_attorneyImg').hide('300');
         $(document).on('click', '.update_service', function() {
             var serviceID = $(this).attr('id');
             $.ajax({
@@ -577,6 +578,21 @@
             }
         });
 
+        $(document).on('change', '#update_attroney', function() {
+            var trans = $(this).val();
+            switch (trans) {
+                case '2':
+                    $('#update_attorneyImg').show('300');
+                    $('#inpFile').prop('required', true);
+                    break;
+            
+                default:
+                    $('#update_attorneyImg').hide('300');
+                    $('#inpFile').prop('required', false);
+                    break;
+            }
+        });
+
         $(document).on('submit', '#updateServices', function(event) {
             event.preventDefault();
             event.stopImmediatePropagation();
@@ -603,5 +619,97 @@
             });
         });
 
+        $(document).on('click', '.update_practice', function() {
+            var practice_id = $(this).attr('id');
+
+            $.ajax({
+                url: "<?= base_url() . 'WebsiteSettings/getPA_data' ?>",
+                method: "POST",
+                dataType: "json",
+                data: {
+                    practice_id: practice_id,
+                },
+                success: function(data) {
+                    $('#modalEditPracticeArea').modal('show');
+                    $('#practice_id').val(practice_id);
+                    $('#title').val(data.title);
+                    $('#short_desc').val(data.short_desc);
+                }
+            })
+        });
+
+        $(document).on('submit', '#editPracticeArea', function(event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            $.ajax({
+                url: "<?= base_url() . 'WebsiteSettings/editPracticeArea' ?>",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    Swal.fire(
+                        'Thank you!',
+                        'Updated successfully.',
+                        'success'
+                    );
+                    $('#modalEditPracticeArea').modal('hide');
+                    $('#editPracticeArea').trigger('reset');
+                    tablePracticeArea.draw();
+                },
+                error: function() {
+                    Swal.fire('Error!', 'Something went wrong. Please try again later!', 'error');
+                }
+            });
+        });
+
+        $(document).on('click', '.update_attroney', function() {
+            var attorney_id = $(this).attr('id');
+
+            $.ajax({
+                url: "<?= base_url() . 'WebsiteSettings/getAttorney_data' ?>",
+                method: "POST",
+                dataType: "json",
+                data: {
+                    attorney_id: attorney_id,
+                },
+                success: function(data) {
+                    $('#modalEditAttorney').modal('show');
+                    $('#attorney_id').val(attorney_id);
+                    $('#name').val(data.name);
+                    $('#practice_areas').val(data.practice_areas);
+                    $('#quotes').val(data.quotes);
+                }
+            })
+        });
+
+        $(document).on('submit', '#updateAttorney', function(event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            $.ajax({
+                url: "<?= base_url() . 'WebsiteSettings/updateAttorney' ?>",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    Swal.fire(
+                        'Thank you!',
+                        'Updated successfully.',
+                        'success'
+                    );
+                    $('#modalEditAttorney').modal('hide');
+                    $('#updateAttorney').trigger('reset');
+                    tableAttorney.draw();
+                },
+                error: function() {
+                    Swal.fire('Error!', 'Something went wrong. Please try again later!', 'error');
+                }
+            });
+        });
+
+        
     });
 </script>

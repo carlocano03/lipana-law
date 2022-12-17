@@ -83,7 +83,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label>Corporate Video</label>
-                            <input type="file" name="inpFile" class="form-control" accept="video/*" required>
+                            <input type="file" name="inpFile" class="form-control" accept="video/*">
                         </div>
                         <div class="form-group mb-3">
                             <label>About Image <small class="text-danger">(Size: w-20.83inches x h-17.54)</small></label>
